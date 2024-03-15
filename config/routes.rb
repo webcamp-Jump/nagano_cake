@@ -12,16 +12,16 @@ Rails.application.routes.draw do
 
 
  namespace :public do
-resources :addresses, only: [:index, :edit, :create, :update, :destroy] 
-resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show] 
-resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create] 
-resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw] 
-resources :sessions, only: [:new, :create, :destroy] 
-resources :registrations, only: [:new, :create] 
-resources :items, only: [:index, :show] 
+resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+resources :sessions, only: [:new, :create, :destroy]
+resources :registrations, only: [:new, :create]
+resources :items, only: [:index, :show]
 
 end
- 
+
 namespace :admin do
   resources :order_details, only: [:update]
   resources :orders, only: [:show]
