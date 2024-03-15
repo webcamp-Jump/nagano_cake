@@ -1,84 +1,36 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
-  end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/thanks'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :public do
-    get 'registrations/new'
-    get 'registrations/create'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  namespace :admin do
-    get 'order_details/update'
-  end
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  namespace :admin do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :admin do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
+ root to: 'public/homes#top'
+ get '/about', to: 'public/homes#about', as: 'about'
+  devise_for :admin, controllers: {
+  sessions: "admin/sessions"
+}
+  devise_for :customers, controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+  }
+
+
+ namespace :public do
+resources :addresses, only: [:index, :edit, :create, :update, :destroy] 
+resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show] 
+resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create] 
+resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw] 
+resources :sessions, only: [:new, :create, :destroy] 
+resources :registrations, only: [:new, :create] 
+resources :items, only: [:index, :show] 
+
+end
+ 
+namespace :admin do
+  resources :order_details, only: [:update]
+  resources :orders, only: [:show]
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update]
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :homes, only: [:top]
+end
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
