@@ -1,5 +1,6 @@
 class Public::CartItemsController < ApplicationController
-  def index
+before_action :authenticate_customer!
+ def index
   end
 
   def update
