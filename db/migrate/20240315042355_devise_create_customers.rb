@@ -21,7 +21,6 @@ t.string :first_name_kana
 t.string :telephone_number
 t.string :postal_code
 t.string :address
-t.boolean :is_active
       ## Trackable
       # t.integer  :sign_in_count, default: 0, null: false
       # t.datetime :current_sign_in_at
