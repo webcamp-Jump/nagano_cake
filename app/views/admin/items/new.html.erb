@@ -1,2 +1,33 @@
-<h1>Admin::Items#new</h1>
-<p>Find me in app/views/admin/items/new.html.erb</p>
+<h1>商品新規登録</h1>
+<!-- form_with部分 -->
+<%= form_with url: admin_items_path, model: @item do |f| %>
+  <p>商品画像</p>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <p>商品名</p>
+  <%= f.text_field :name %>
+
+  <p>商品説明</p>
+  <%= f.text_area :introduction %>
+
+	<p>ジャンル</p>
+	<%= f.select :genre, options_for_select([["ジャンル1", "genre_1"], ["ジャンル2", "genre_2"], ["ジャンル3", "genre_3"]]) %>
+	<!--ジャンル作成が必要-->
+
+	<p>税込価格</p>
+	<%= f.text_field :price %>
+
+  <p>販売ステータス</p>
+<p>
+  <%= f.label :is_active, "販売中" %>
+  <%= f.radio_button :is_active, true, {checked: @item.is_active} %>
+
+  <%= f.label :is_active, "販売停止中" %>
+  <%= f.radio_button :is_active, false, {checked: !@item.is_active} %>
+</p>
+
+  <%= f.submit '新規登録' %>
+<% end %>
+
+<!--↓外部キー用-->
+<!--%= f.select :genre_id, options_for_select(@genres) %-->
