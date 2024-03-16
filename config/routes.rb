@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  get '/about', to: 'public/homes#about', as: 'about'
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
-}
+  }
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -12,15 +12,14 @@ Rails.application.routes.draw do
 
 
  namespace :public do
-resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
-resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-resources :sessions, only: [:new, :create, :destroy]
-resources :registrations, only: [:new, :create]
-resources :items, only: [:index, :show]
-
-end
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+  resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :registrations, only: [:new, :create]
+  resources :items, only: [:index, :show]
+ end
 
 namespace :admin do
   resources :order_details, only: [:update]
