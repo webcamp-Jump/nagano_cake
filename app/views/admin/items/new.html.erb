@@ -13,7 +13,7 @@
 	<p>ジャンル</p>
 	<%= f.select :genre_id, options_for_select(@genres.map { |genre| [genre.name, genre.id] }) %>
 
-	<p>税込価格</p>
+	<p>税抜価格</p>
 	<%= f.text_field :price %>
 
   <p>販売ステータス</p>

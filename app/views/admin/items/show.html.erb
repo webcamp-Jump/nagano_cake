@@ -10,10 +10,11 @@
 <p><%= @item.introduction %></p>
 
 <p>ジャンル</p>
-<p><%= @item.genre %></p>
+<p><%= @item.genre.name %></p>
 
 <p>税込価格</p>
-<p><%= @item.price %></p>
+<p><%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %></p>
+
 
 <p>販売ステータス</p>
 <p>
@@ -23,3 +24,6 @@
     販売停止
   <% end %>
 </p>
+
+
+<%= link_to '編集する', edit_admin_item_path(@item) %>
