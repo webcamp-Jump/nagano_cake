@@ -1,7 +1,7 @@
 <h1>商品詳細</h1>
 
 <p>商品画像</p>
-<img src="<%= @item.image.url %>">
+<%= image_tag @item.image, size: "200x200" %>
 
 <p>商品名</p>
 <p><%= @item.name %></p>

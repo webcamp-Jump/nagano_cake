@@ -11,8 +11,7 @@
   <%= f.text_area :introduction %>
 
 	<p>ジャンル</p>
-	<%= f.select :genre, options_for_select([["ジャンル1", "genre_1"], ["ジャンル2", "genre_2"], ["ジャンル3", "genre_3"]]) %>
-	<!--ジャンル作成が必要-->
+	<%= f.select :genre_id, options_for_select(@genres.map { |genre| [genre.name, genre.id] }) %>
 
 	<p>税込価格</p>
 	<%= f.text_field :price %>
@@ -28,6 +27,3 @@
 
   <%= f.submit '新規登録' %>
 <% end %>
-
-<!--↓外部キー用-->
-<!--%= f.select :genre_id, options_for_select(@genres) %-->
