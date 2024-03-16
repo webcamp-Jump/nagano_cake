@@ -1,26 +1,32 @@
-<h1>Public::Items#show</h1>
-<!--ジャンルID-->
-genre_id
-<!--商品名-->
-name
-<!--商品説明文-->
-introduction
-<!--税抜き価格-->
-price
-<!--販売ステータス-->
-is_active
 
+<!--ジャンルID-->
+<!--genre_id-->
+<!--商品名-->
+<!--name-->
+<!--商品説明文-->
+<!--introduction-->
+<!--税抜き価格-->
+<!--price-->
+<!--販売ステータス-->
+<!--is_active-->
 
 <div>
   <%= image_tag @item.image %>
 </div>
+<div>
   <%= @item.name %>
+</div>
+<div>
   <%= @item.introduction %>
+</div>
+<div>
   <!--ユーザーは税込、管理者は税抜とカラム無しの税込-->
   <%= @item.price %>
+</div>
+<div>
   <!--販売ステータス-->
   <%= @item.is_active	%>
-
+</div>
 
 <!--カートに入れるボタン-->
 <!--商品販売中の場合-->
