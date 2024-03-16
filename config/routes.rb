@@ -20,6 +20,7 @@ resources :sessions, only: [:new, :create, :destroy]
 resources :registrations, only: [:new, :create]
 resources :items, only: [:index, :show]
 
+
 end
 
 namespace :admin do
