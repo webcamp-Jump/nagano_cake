@@ -1,3 +1,4 @@
+<div class='container px-5 px-sm-0'>
 <h1>ジャンル一覧・追加</h1>
 
 <%= form_with url: admin_genres_path, model: @genre do |g| %>
@@ -7,7 +8,7 @@
 <% end %>
 
 
-<table>
+<table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th>ジャンル</th>
@@ -27,3 +28,4 @@
     <% end %>
   </tbody>
 </table>
+</div>
