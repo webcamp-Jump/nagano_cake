@@ -1,4 +1,5 @@
 <!--管理者側の会員一覧ページ-->
+
 <div class="container">
   <div class="row">
     
@@ -19,7 +20,7 @@
         <% @customers.each do |customer| %>
         <tr>
           <td><%= customer.id %></td>
-          <td><%= "#{customer.last_name} #{customer.first_name}" %></td>
+          <td><%= link_to "#{customer.last_name} #{customer.first_name}",admin_customer_path(customer.id) %></td>
           <td><%= customer.email %></td>
           <td>
           <% if customer.is_active %>
