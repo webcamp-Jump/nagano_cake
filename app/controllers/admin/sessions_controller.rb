@@ -8,7 +8,7 @@ before_action :authenticate_admin!
   end
 
   def after_sign_out_path_for(resource)
-    admin_sessions_path
+    root_path
   end
 
   # GET /resource/sign_in
