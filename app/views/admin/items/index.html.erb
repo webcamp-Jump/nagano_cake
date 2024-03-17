@@ -1,13 +1,13 @@
 <!--管理者側の商品一覧ページ-->
-
+<div class='container px-5 px-sm-0'>
+<div class="d-flex justify-content-around">
 <h2>商品一覧</h2>
-
-<%= link_to  new_admin_item_path do %>
-  新規登録
+<%= link_to  new_admin_item_path, class: "btn btn-transparent"  do %>
+  <i class="fa-solid fa-plus"></i>
 <% end %>
-
+</div>
 <div>
-<table>
+<table class='table table-hover table-inverse'>
   <thead>
     <tr>
       <th>商品ID</th>
@@ -35,15 +35,22 @@
         <%= item.genre_id %>
         </td>
         <td>
-        <%= item.is_active %>
-        </td>
+<% if item.is_active %>
+
+<span class='text-success'>販売中</span>
+
+　　<% else %>
+
+　 　 <span class='text-secondary'>販売停止</span>
+
+　 <% end %>
+
+</td>
       </tr>
-
-
-
-
-
     <% end %>
   </tbody>
 </table>
 </div>
+</div>
+
+<td>
