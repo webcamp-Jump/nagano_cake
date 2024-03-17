@@ -3,29 +3,78 @@
     <div>
       <div>
         <ul>
-          <li>
-              <%= link_to new_admin_session_path do %>
-                管理者ログイン
-              <% end %>
-              <%= link_to destroy_admin_session_path, method: :delete do %>
-                管理者ログアウト
-              <% end %>
-          </li>
-          <% if customer_signed_in? %>
-            <li>
-              <%= link_to destroy_customer_session_path, method: :delete do %>
-                Log out
-              <% end %>
-            </li>
-          <% else %>
+          <!-- ログインしていない場合 -->
+          <% unless admin_signed_in? || customer_signed_in? %>
             <li>
               <%= link_to new_customer_registration_path do %>
-               Sign up
+                新規登録
               <% end %>
             </li>
             <li>
               <%= link_to new_customer_session_path do %>
-                Log in
+                ログイン
+              <% end %>
+            </li>
+            <li>
+              <%= link_to new_admin_session_path do %>
+              管理者ログイン
+              <% end %>
+            </li>
+            <li>
+              <%= link_to public_items_path do %>
+              商品一覧(顧客側)
+              <% end %>
+            </li>
+            <li>
+              <%= link_to about_path do %>
+              About
+              <% end %>
+            </li>
+          <% end %>
+          <!-- 管理者がログインしている場合 -->
+          <% if admin_signed_in? %>
+            <li>
+              <%= link_to admin_items_path do %>
+                商品一覧(管理者側)
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_customers_path do %>
+              会員一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_root_path do %>
+              注文履歴一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to admin_genres_path do %>
+              ジャンル一覧
+              <% end %>
+            </li>
+            <li>
+              <%= link_to destroy_admin_session_path, method: :delete do %>
+              管理者ログアウト
+              <% end %>
+            </li>
+          <% end %>
+          <!-- 顧客がログインしている場合 -->
+          <% if customer_signed_in? %>
+            <li>
+              マイページ
+            </li>
+            <li>
+              <%= link_to public_items_path do %>
+              商品一覧(顧客側)
+              <% end %>
+            </li>
+            <li>
+              カート
+            </li>
+            <li>
+              <%= link_to destroy_customer_session_path, method: :delete do %>
+              Log out
               <% end %>
             </li>
           <% end %>
