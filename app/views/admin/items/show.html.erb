@@ -19,7 +19,7 @@
         </tr>
         <tr>
           <th class="text-end" style="border: none;">税込価格<br>(税抜価格)</th>
-          <td style="border: none;"><%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %>(<%= number_with_delimiter(@item.price) %>)</td>
+          <td style="border: none;"><%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %> 円<br>(<%= number_with_delimiter(@item.price) %> 円)</td>
         </tr>
         <tr>
           <th class="text-end" style="border: none;">ジャンル</th>
