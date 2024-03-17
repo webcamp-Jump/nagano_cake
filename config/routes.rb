@@ -15,24 +15,24 @@ Rails.application.routes.draw do
 
 
  namespace :public do
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :registrations, only: [:new, :create]
-    resources :items, only: [:index, :show]
-  end
+resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+resources :sessions, only: [:new, :create, :destroy]
+resources :registrations, only: [:new, :create]
+resources :items, except: [:destroy]
+end
 
-  namespace :admin do
-    resources :order_details, only: [:update]
-    resources :orders, only: [:show]
-    resources :customers, only: [:index, :show, :edit, :update]
-    resources :genres, only: [:index, :create, :edit, :update]
-    resources :items, only: [:index, :new, :create, :show, :edit, :update]
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :homes, only: [:top]
-  end
+namespace :admin do
+  resources :order_details, only: [:update]
+  resources :orders, only: [:show]
+  resources :customers, only: [:index, :show, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update]
+  resources :items, only: [:index, :new, :create, :show, :edit, :update]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :homes, only: [:top]
+end
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
