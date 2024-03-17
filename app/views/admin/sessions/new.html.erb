@@ -1,24 +1,32 @@
-<h2>ログイン</h2>
+<h3><mark>ログイン</mark></h3> 
+<!--CSSでマークの色の指定する-->
 
-会員の方はこちらからログイン
+<mark>会員の方はこちらからログイン</mark>
 
+
+  
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-  <div class="field">
-    <%= f.label :メールアドレス %>
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
 
-  <div class="field">
-    <%= f.label :パスワード %>
-    <%= f.password_field :password, autocomplete: "current-password" %>
-  </div>
+<table>
+  
+  <tr>
+    <td><%= f.label :メールアドレス %></td>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
 
-  <div class="actions">
-    <%= f.submit "ログイン" %>
-  </div>
+  <tr>
+    <td><%= f.label :パスワード %></td>
+    <td><%= f.password_field :password, autocomplete: "current-password" %></td>
+  </tr>
+
+  <tr>
+    <td colspan="2" class="actions"><%= f.submit "ログイン" %></td>
+  </tr>
+</table>
+
 <% end %>
 
-<h2>会員登録がお済みでない方</h2>
+<h2><mark>会員登録がお済みでない方</mark></h2>
 
 <%= link_to "こちら", new_customer_registration_path %>
 から新規登録を行ってください。
