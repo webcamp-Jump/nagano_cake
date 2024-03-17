@@ -62,7 +62,9 @@
           <!-- 顧客がログインしている場合 -->
           <% if customer_signed_in? %>
             <li>
+              <%= link_to public_customers_path do %>
               マイページ
+              <% end %>
             </li>
             <li>
               <%= link_to public_items_path do %>
@@ -70,7 +72,9 @@
               <% end %>
             </li>
             <li>
+              <%= link_to public_cart_items_path do %>
               カート
+              <% end %>
             </li>
             <li>
               <%= link_to destroy_customer_session_path, method: :delete do %>
