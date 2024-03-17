@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
 
- root to: 'public/homes#top'
- get '/about', to: 'public/homes#about', as: 'about'
+  root to: 'public/homes#top'
+  get '/about', to: 'public/homes#about', as: 'about'
+  get '/', to: 'admin/homes#top', as: 'admin_root'
+  get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
+  get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
   }
