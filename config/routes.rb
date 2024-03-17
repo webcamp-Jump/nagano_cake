@@ -4,7 +4,7 @@ Rails.application.routes.draw do
  get '/about', to: 'public/homes#about', as: 'about'
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
-}
+  }
   devise_for :customers, controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
@@ -19,7 +19,6 @@ resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
 resources :sessions, only: [:new, :create, :destroy]
 resources :registrations, only: [:new, :create]
 resources :items, only: [:index, :show]
-
 end
 
 namespace :admin do
