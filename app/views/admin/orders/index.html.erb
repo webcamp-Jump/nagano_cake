@@ -19,7 +19,6 @@
         <td>
           <%= form_with model: order, url: admin_order_path(order), method: :patch do |f| %>
           <%= f.select :order_status, Order.order_statuses, class: "form-control" %>
-          <!--%= f.submit "更新", class: "btn btn-primary" %>-->
           <% end %>
         </td>
       </tr>
