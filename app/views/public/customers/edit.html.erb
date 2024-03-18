@@ -47,16 +47,16 @@
      </div><br>
 
      <div class="row">
-          <lavel class="col-lg-3">メールアドレス</lavel>
+          <lavel class="col-lg-3">宛名</lavel>
           <div class="col-lg-3">
-            <%= f.text_field :email,autofocus: true, autocomplete: "email" %>
+            <%= f.text_field :name,autofocus: true, autocomplete: "name" %>
           </div>
      </div><br>
 
 
      <div class="row">
       <div class="col-md-3"> <%= f.submit "編集内容を保存", class: "btn btn-success" %></div> 
-        <div class="col-lg-6 col-lg-offset-3"><%= link_to "退会する", public_customers_unsubscribe_path(current_customer), class: "btn btn-danger" %></div> 
+        <div class="col-lg-6 col-lg-offset-3"><%= link_to "退会する", public_customers_unsubscribe_path, class: "btn btn-danger" %></div> 
      </div>
 
  <% end %>
