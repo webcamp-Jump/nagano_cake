@@ -7,6 +7,13 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
   get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
   get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
+  
+  
+  get 'public/addresses', to: 'public/addresses#index', as: 'public_addresses'
+  get 'public/addresses/:id/edit', to: 'public/addresses#edit', as: 'public_address_edit'
+
+
+
 
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
