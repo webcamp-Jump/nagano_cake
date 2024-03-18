@@ -17,6 +17,18 @@
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <style>
+      body {
+        height: 100vh; /* ブラウザの高さいっぱいに表示 */
+        margin: 0; /* マージンをリセット */
+        padding: 0; /* パディングをリセット */
+      }
+
+      main {
+        height: 100%; /* main要素も高さいっぱいに表示 */
+        overflow-y: auto; /* コンテンツがはみ出た場合にスクロールバーを表示 */
+      }
+    </style>
   </head>
 
   <body>
