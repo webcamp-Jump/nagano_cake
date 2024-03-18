@@ -1,14 +1,25 @@
-<div class="col-sm-7 col-md-5 col-lg-3 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
-<h3>ジャンル編集</h3>
+<div class="container">
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-sm-9 col-md-7 col-lg-5 px-0">
+      <h3>ジャンル編集</h3>
+      <% if @genre.errors.any? %>
+      <div class="alert alert-danger">
+      <%= @genre.errors.count %>件のエラーが発生しました
+      <ul class="mb-0">
+      <% @genre.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+      <% end %>
+      </ul>
+      </div>
+      <% end %>
 
-<%= form_with url: admin_genre_path, method: :patch, model: @genre do |g| %>
+      <%= form_with url: admin_genre_path, method: :patch, model: @genre do |g| %>
 
-<div class="form-group row">
-<label for="genre_name" class="col-sm-3 col-form-label">ジャンル名</label>
-<div class="col-sm-9 d-flex align-items-center">
-<%= g.text_field :name, class: 'form-control mr-2' %>
-<%= g.submit '保存', class: "btn btn-outline-success btn-sm" %>
-</div>
-</div>
-<% end %>
+      <div class="form-group">
+      <%= g.text_field :name, class: 'form-control', placeholder: 'ジャンル名' %>
+      </div>
+      <%= g.submit '保存', class: "btn btn-success btn-block" %>
+      <% end %>
+    </div>
+  </div>
 </div>

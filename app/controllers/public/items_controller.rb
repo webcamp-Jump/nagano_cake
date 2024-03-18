@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  
   def index
     @items = Item.page(params[:page])
     @total_items = @items.count
@@ -13,6 +14,6 @@ class Public::ItemsController < ApplicationController
 
   def item_params
   params.require(:item).permit(:genre_id, :name, :introduction, :image, :price, :is_active)
-　end
- end
+  end
+
 end

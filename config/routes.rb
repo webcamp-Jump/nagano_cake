@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   root to: 'public/homes#top'
-  get '/about', to: 'public/homes#about', as: 'about'  
+  get '/about', to: 'public/homes#about', as: 'about'
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
@@ -38,7 +38,7 @@ namespace :admin do
   resources :order_details, only: [:update]
   resources :orders, only: [:show]
   resources :customers, only: [:index, :show, :edit, :update]
-  resources :genres, only: [:index, :create, :edit, :update]
+  resources :genres, only: [:index, :create, :edit, :update, :show]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :homes, only: [:top]
