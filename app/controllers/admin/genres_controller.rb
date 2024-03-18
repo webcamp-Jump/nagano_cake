@@ -6,6 +6,10 @@ before_action :authenticate_admin!
     @genre = Genre.new
   end
 
+  def show
+    redirect_to edit_admin_genre_path(params[:id])
+  end
+
   def create
     @genre = Genre.new(genre_params)
     @genres = Genre.all
@@ -19,6 +23,7 @@ before_action :authenticate_admin!
   def edit
     @genre = Genre.find(params[:id])
   end
+
 
   def update
     @genre = Genre.find(params[:id])
