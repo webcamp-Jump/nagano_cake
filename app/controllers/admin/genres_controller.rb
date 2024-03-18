@@ -14,8 +14,10 @@ before_action :authenticate_admin!
     @genre = Genre.new(genre_params)
     @genres = Genre.all
     if @genre.save
+      flash[:notice] = "ジャンルを追加しました。"
       redirect_to admin_genres_path
     else
+      flash.now[:alert] = "ジャンルの追加に失敗しました。"
       render :index
     end
   end
@@ -28,8 +30,10 @@ before_action :authenticate_admin!
   def update
     @genre = Genre.find(params[:id])
     if @genre.update(genre_params)
+      flash[:notice] = "ジャンルを変更しました。"
       redirect_to admin_genres_path
     else
+      flash.now[:alert] = "ジャンルの変更に失敗しました。"
       render :edit
     end
   end

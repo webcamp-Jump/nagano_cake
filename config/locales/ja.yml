@@ -1,0 +1,9 @@
+ja:
+  activerecord:
+    errors:
+      models:
+        genre:
+          attributes:
+            name:
+              blank: "が空白です"
+              taken: "は既に存在します"

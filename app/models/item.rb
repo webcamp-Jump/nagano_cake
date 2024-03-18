@@ -7,6 +7,5 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :image, presence: true
   validates :introduction, presence: true
-  validates :is_active, presence: true
 
 end
