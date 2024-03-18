@@ -1,14 +1,19 @@
 <!--ユーザー側の商品一覧ページ-->
+<div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
 
-<h2>商品一覧</h2><p>(全<%= @total_items %>件)</p>
+<h2>商品一覧</h2><th><h4>(全<%= @total_items %>件)</h4></th>
+
 
 <% @items.each do |item| %>
 
 <div>
   
-  <%= image_tag item.image_url %>
-  <h2>商品名：<%= item.name %></h2>
-  <p>価格: ¥ <%= item.price%></p>
+  <% if item.image.attached? %>
+    <%= image_tag url_for(item.image), class: 'img-fluid' %>
+  <% end %>
+
+  <h5>商品名：<%= link_to item.name, public_item_path(item) %></h5>
+  <h5>価格: ¥ <%= item.price%></h5>
   
 </div>
 
