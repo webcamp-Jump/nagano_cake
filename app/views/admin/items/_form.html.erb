@@ -6,14 +6,9 @@
       <table class="table table-borderless">
         <tr>
           <th class="text-end">商品画像</th>
-          <td class="align-middle">
-            <div class="input-group">
-              <div class="custom-file">
-                <%= f.file_field :image, accept: "image/*", class: 'custom-file-input', id: 'customFile' %>
-                <label class="custom-file-label" for="customFile">Choose file</label>
-              </div>
-            </div>
-          </td>
+            <td>
+              <%= f.file_field :image, accept: "image/*", class: "btn btn-outline-secondary " %>
+            </td>
         </tr>
         <tr>
           <th class="text-end">商品名</th>
