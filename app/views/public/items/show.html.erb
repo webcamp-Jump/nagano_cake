@@ -8,21 +8,40 @@
           <td><%= image_tag @item.image, size: "800x800", class: "img-fluid" %></td>
         </tr>
         <tr>
-          <td><h1 style="border: none;"><%= @item.name %></h1></td>
+          <td class="text-center"><h1 style="border: none;"><%= @item.name %></h1></td>
         </tr>
         <tr>
-          <td><h3 style="border: none;"><%= @item.introduction %></h3></td>
+          <td class="text-center"><h3 style="border: none;"><%= @item.introduction %></h3></td>
         </tr>
         <tr>
-          <td><h3 style="border: none;">￥<%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %> (税込)</h3></td>
+          <td class="text-center"><h3 style="border: none;">￥<%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %> (税込)</h3></td>
         </tr>
         
         <tr>
-          
           <td>
-            
+            <div class="d-flex justify-content-center">
+              <div>
+                <h3><select name="cart_item[amount]" id="amount">
+                  <option value="">個数の選択</option>
+                  <option value="1">1個</option>
+                  <option value="2">2個</option>
+                  <option value="3">3個</option>
+                  <option value="4">4個</option>
+                  <option value="5">5個</option>
+                  <option value="6">6個</option>
+                  <option value="7">7個</option>
+                  <option value="8">8個</option>
+                  <option value="9">9個</option>
+                  <option value="10">10個</option>
+                </select></h3>
+              </div>
+                <div style="margin-left: 10px;">　　　</div>
+                <%= link_to 'カートに入れる', public_cart_items_path, class: "btn btn-success" %>
+              </div>
+            </div>
           </td>
         </tr>
+
       </table>
     </div>
   </div>
