@@ -30,7 +30,7 @@
         </tr>
         <tr>
           <th class="text-end">税込価格</th>
-          <td><%= f.text_field :price, class: 'form-control' %></td>
+          <td><%= f.text_field :price, class: 'form-control', pattern: "[0-9]+", placeholder: '半角' %></td>
         </tr>
         <tr>
           <th class="text-end">ジャンル</th>
