@@ -16,7 +16,7 @@ before_action :authenticate_customer!
     else
       flash.now[:alert] = "必要な情報を入力してください"
       render :edit
-    end 
+    end
   end
 
   def unsubscribe
@@ -35,12 +35,12 @@ before_action :authenticate_customer!
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :password, :password_confirmation)
   end
-  
+
   # def ensure_correct_customer
   # customer = Customer.find(params[:id])
   # unless customer.id == current_customer.id
   #   redirect_to root_path
   # end
   # end
-  
+
 end
