@@ -11,15 +11,25 @@
               <th>単価(税込)</th>
               <th>数量</th>
               <th>小計</th>
+              <th>操作</th> <!-- 追加 -->
             </tr>
           </thead>
           <tbody>
             <% @cart_items.each do |cart_item| %>
               <tr>
                 <td><%= cart_item.item.name %></td>
-                <td><%= cart_item.amount %></td>
                 <td>￥<%= number_with_delimiter((cart_item.item.price * 1.1).ceil.to_i, delimiter: ',') %></td>
+                <td>
+                  <%= form_with model: cart_item, url: public_cart_item_path(cart_item), method: :patch do |form| %>
+                    <%= form.select :amount, (1..10), { selected: cart_item.amount }, { class: 'form-select form-control-sm' } %>
+                    <%= form.submit '更新', class: 'btn btn-sm btn-primary mt-1' %>
+                  <% end %>
+
+                </td>
                 <td>￥<%= number_with_delimiter((cart_item.item.price * 1.1 * cart_item.amount).ceil.to_i, delimiter: ',') %></td>
+                <td>
+                  <%= link_to '削除', public_cart_item_path(cart_item), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-sm btn-danger' %>
+                </td>
               </tr>
             <% end %>
           </tbody>

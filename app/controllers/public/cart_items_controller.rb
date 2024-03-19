@@ -23,6 +23,16 @@ class Public::CartItemsController < ApplicationController
     end
   end
 
+  def update
+    @cart_item = CartItem.find(params[:id])
+    if @cart_item.update(cart_item_params)
+      redirect_to public_cart_items_path, notice: 'カートの商品数量を更新しました。'
+    else
+      logger.error @cart_item.errors.full_messages.join(', ')
+      redirect_to public_cart_items_path, alert: 'カートの商品数量を更新できませんでした。'
+    end
+  end
+
   private
 
   def cart_item_params

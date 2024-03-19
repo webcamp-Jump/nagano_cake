@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   namespace :public do
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show]
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
+    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create, :show]
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
