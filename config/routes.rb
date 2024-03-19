@@ -1,17 +1,12 @@
 Rails.application.routes.draw do
 
   root to: 'public/homes#top'
-  get '/about', to: 'public/homes#about', as: 'about'
+  get '/about', to: 'public/homes#about', as: 'about'  
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
   get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
   get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
-  
-  
-  get 'public/addresses', to: 'public/addresses#index', as: 'addresses'
-  get 'public/addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
-  patch 'public/addresses/:id', to: 'public/addresses#update'
 
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
@@ -36,7 +31,7 @@ namespace :admin do
   resources :order_details, only: [:update]
   resources :orders, only: [:index, :show]
   resources :customers, only: [:index, :show, :edit, :update]
-  resources :genres, only: [:index, :create, :edit, :update, :show]
+  resources :genres, only: [:index, :create, :edit, :update]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
   resources :homes, only: [:top]
