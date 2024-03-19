@@ -24,12 +24,12 @@ before_action :authenticate_customer!
   end
 
   def update
-  @address = Address.find(params[:id])
-  if @address.update(address_params)
-    redirect_to addresses_path, notice: "変更内容が保存されました。"
-  else
-    render :edit
-  end
+    @address = Address.find(params[:id])
+    if @address.update(address_params)
+      redirect_to addresses_path, notice: "変更内容が保存されました。"
+    else
+      render :edit
+    end
   end
 
   def destroy
