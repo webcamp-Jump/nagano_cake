@@ -25,28 +25,43 @@
     /*}*/
 </style>
 
-<div class="container" style="position: relative; text-align: center; width: 800px; height: 500px; overflow: hidden;">
-    <%= image_tag 'cake.jpg', class: "img-fluid", style: "width: 100%; height: 100%; object-fit: cover;" %>
-    <div class="text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white;">
-        <p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <h2>ジャンル検索</h2>
+      <%= form_tag(public_items_path, method: :get, class: "form-inline") do %>
+        <%= select_tag :genre_id, options_from_collection_for_select(@genres, :id, :name, params[:genre_id]), class: "form-control", prompt: "ジャンルを選択してください" %>
+        <%= submit_tag "検索", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+    <div class="col-md-9">
+      <div class="container" style="position: relative; text-align: center; width: 800px; height: 500px; overflow: hidden;">
+        <%= image_tag 'cake.jpg', class: "img-fluid", style: "width: 800px; height: 500px; object-fit: cover;" %>
+        <div class="text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: black;">
+          <p>
             <span>Welcome Naganocake</span><br>
             このサイトは、ケーキ販売のECサイトになります。<br>
             会員でない方も商品の閲覧はできますが、<br>
             購入には会員登録が必要になります。<br>
-        </p>
+          </p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="container">
   <h2>新着商品</h2>
   <div class="row">
-      <% @items.first(4).each do |item| %>
-        <div class="col-md-3">
-        <!--画像からのリンクまだ-->
-        <%= image_tag item.image.variant(resize: "100x100") %>
-        </div>
-      <% end %>
+    <% @items.each do |item| %>
+      <div class="col-md-3">
+        <%= link_to public_item_path(item) do %>
+          <%= image_tag item.image.variant(resize: "100x100"), class: "img-fluid", style: "width: 100px; height: 100px; object-fit: cover; margin-bottom: 20px;" %>
+        <% end %>
+      </div>
+    <% end %>
   </div>
   <div class="all-items-show-button">
-      <%= link_to "全ての商品をみる",  public_items_path %>
+    <%= link_to "全ての商品をみる", public_items_path %>
   </div>
+</div>

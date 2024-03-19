@@ -24,7 +24,7 @@ Rails.application.routes.draw do
 
  namespace :public do
 resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
+resources :orders, only: [:index, :show]
 resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
 resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
 resources :sessions, only: [:new, :create, :destroy]
@@ -34,7 +34,7 @@ end
 
 namespace :admin do
   resources :order_details, only: [:update]
-  resources :orders, only: [:show]
+  resources :orders, only: [:index, :show]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update, :show]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
