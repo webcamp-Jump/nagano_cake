@@ -8,7 +8,8 @@
     </h2>
     <ul>
       <% resource.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <% translated_message = message.gsub(resource.class.model_name.human, resource.class.model_name.human.downcase) %>
+        <li><%= translated_message %></li>
       <% end %>
     </ul>
   </div>

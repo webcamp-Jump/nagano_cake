@@ -2,8 +2,10 @@ Rails.application.routes.draw do
 
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
+  # 退会処理
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
+  
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
   get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
   get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
@@ -20,7 +22,9 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
   }
-
+  
+  post '/customers/sign_in', to: 'public/sessions#create'
+ 
 
  namespace :public do
 resources :addresses, only: [:index, :edit, :create, :update, :destroy]
