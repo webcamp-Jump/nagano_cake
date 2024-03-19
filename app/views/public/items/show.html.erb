@@ -20,16 +20,17 @@
               <td><%= @item.introduction %></td>
             </tr>
             <tr>
-              <th>税込価格:</th>
+              <th>税込み価格:</th>
               <td>￥<%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %> (税込)</td>
             </tr>
             <tr>
-              <th>税抜価格:</th>
+              <th>税抜き価格:</th>
               <td>￥<%= number_with_delimiter((@item.price).ceil.to_i, delimiter: ',') %> (税抜)</td>
             </tr>
           </table>
           <!-- カートに追加フォーム -->
           <%= form_with(model: @cart_item, url: public_cart_items_path, html: { class: "text-center" }) do |form| %>
+            <%= form.hidden_field :item_id, value: @item.id %>
             <div class="row justify-content-center">
               <div class="col-md-6">
                 <!-- カスタムスタイルのプルダウン -->
