@@ -25,19 +25,20 @@ Rails.application.routes.draw do
 
   post '/customers/sign_in', to: 'public/sessions#create'
 
-  namespace :public do
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create] do
-      post 'confirm', on: :collection
-      get 'thanks', on: :collection
-    end
-    resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-    resources :sessions, only: [:new, :create, :destroy]
-    resources :registrations, only: [:new, :create]
-    resources :items, except: [:destroy]
+ namespace :public do
+  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+  resources :orders, only: [:new, :index, :show, :create] do
+    post 'confirm', on: :collection
+    get 'thanks', on: :collection
   end
-
+  resources :cart_items, only: [:index, :update, :destroy, :create] do
+    delete :destroy_all, on: :collection # ここにエラーがある可能性があります
+  end
+  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+  resources :sessions, only: [:new, :create, :destroy]
+  resources :registrations, only: [:new, :create]
+  resources :items, except: [:destroy]
+end
   namespace :admin do
     resources :order_details, only: [:update]
     resources :orders, only: [:index, :show]
