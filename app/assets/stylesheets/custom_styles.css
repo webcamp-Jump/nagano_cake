@@ -1,14 +1,4 @@
-/* After */
-body {
-  height: 100vh;
-  margin: 0;
-  padding: 0;
-}
 
-main {
-  height: 100%;
-  overflow-y: auto;
-}
 
 .flash-message {
   text-align: center;
@@ -26,4 +16,32 @@ main {
   background-color: #ffd4d1;
   color: #930403;
   border: solid 1px #930403;
+}
+
+.item-grid {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.item-container {
+  width: 25%; /* 2列にするための幅 */
+  box-sizing: border-box; /* ボックスの外側も含めて幅を設定 */
+  padding: 10px; /* 適切な間隔を設定 */
+}
+
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-top: 100%;
+  overflow: hidden;
+}
+
+.item-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
