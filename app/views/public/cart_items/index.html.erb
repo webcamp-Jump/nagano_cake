@@ -18,11 +18,11 @@
             <% total_price = 0 %>
             <% @cart_items.each do |cart_item| %>
               <% tax_inclusive_price = cart_item.item.price * 1.10 %> <!-- 税込価格を計算 -->
-              <% subtotal = (tax_inclusive_price * cart_item.amount).round %> <!-- 小計を計算し、四捨五入 -->
+              <% subtotal = (tax_inclusive_price.round * cart_item.amount).round %> <!-- 小計を計算し、四捨五入 -->
               <% total_price += subtotal %> <!-- 合計金額を計算 -->
               <tr>
                 <td><%= link_to cart_item.item.name, public_item_path(cart_item.item) %></td>
-                <td>￥<%= number_with_delimiter(tax_inclusive_price.ceil.to_i, delimiter: ',') %></td>
+                <td>￥<%= number_with_delimiter(tax_inclusive_price.round, delimiter: ',') %></td>
                 <td>
                   <%= form_with model: cart_item, url: public_cart_item_path(cart_item), method: :patch do |form| %>
                     <%= form.select :amount, (1..10), { selected: cart_item.amount }, { class: 'form-select form-control-sm' } %>
