@@ -36,7 +36,7 @@
                 </select></h3>
               </div>
                 <div style="margin-left: 10px;">　　　</div>
-                <%= link_to 'カートに入れる', public_cart_items_path, class: "btn btn-success" %>
+                <%= link_to 'カートに入れる', public_cart_items_path(item_id: @item.id, cart_item: { amount: 1 }), method: :post, class: "btn btn-success" %>
               </div>
             </div>
           </td>
