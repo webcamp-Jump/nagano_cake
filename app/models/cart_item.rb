@@ -1,6 +1,6 @@
 class CartItem < ApplicationRecord
   belongs_to :item
-  belongs_to :customer
+  belongs_to :customr
   belongs_to :order, optional: true
 
   
