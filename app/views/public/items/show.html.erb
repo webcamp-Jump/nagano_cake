@@ -16,33 +16,16 @@
         <tr>
           <td class="text-center"><h3 style="border: none;">￥<%= number_with_delimiter((@item.price * 1.1).ceil.to_i, delimiter: ',') %> (税込)</h3></td>
         </tr>
-        
-        <tr>
-          <td>
-            <div class="d-flex justify-content-center">
-              <div>
-                <h3><select name="cart_item[amount]" id="amount">
-                  <option value="">個数の選択</option>
-                  <option value="1">1個</option>
-                  <option value="2">2個</option>
-                  <option value="3">3個</option>
-                  <option value="4">4個</option>
-                  <option value="5">5個</option>
-                  <option value="6">6個</option>
-                  <option value="7">7個</option>
-                  <option value="8">8個</option>
-                  <option value="9">9個</option>
-                  <option value="10">10個</option>
-                </select></h3>
-              </div>
-                <div style="margin-left: 10px;">　　　</div>
-                <%= link_to 'カートに入れる', public_cart_items_path(item_id: @item.id, cart_item: { amount: 1 }), method: :post, class: "btn btn-success" %>
+              </table>
+          <%= form_with(model: @cart_item, url: public_cart_items_path) do |form| %>
+            <%= form.hidden_field :item_id, value: @item.id %>
+            <%= form.select :amount, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), prompt: "個数の選択" %>
+            <%= form.submit 'カートに入れる', class: "btn btn-success" %>
+          <% end %>
               </div>
             </div>
           </td>
-        </tr>
-
-      </table>
     </div>
   </div>
 </div>
+
