@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   
   get 'public/addresses', to: 'public/addresses#index', as: 'addresses'
   get 'public/addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
-  patch 'public/addresses/:id', to: 'public/addresses#update'
+  patch '/public/addresses/:id', to: 'public/addresses#update', as: 'update_address'
 
   devise_for :admin, controllers: {
   sessions: "admin/sessions"
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 
  namespace :public do
 resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-resources :orders, only: [:index, :show]
+resources :orders, only: [:new, :confirm, :thanks, :create, :index, :show]
 resources :cart_items, only: [:index, :update, :destroy, :destroy_all, :create]
 resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
 resources :sessions, only: [:new, :create, :destroy]
@@ -38,7 +38,7 @@ end
 
 namespace :admin do
   resources :order_details, only: [:update]
-  resources :orders, only: [:index, :show]
+  resources :orders, only: [:show]
   resources :customers, only: [:index, :show, :edit, :update]
   resources :genres, only: [:index, :create, :edit, :update, :show]
   resources :items, only: [:index, :new, :create, :show, :edit, :update]
