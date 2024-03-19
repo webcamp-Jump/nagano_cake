@@ -6,21 +6,36 @@ before_action :authenticate_admin!
     @genre = Genre.new
   end
 
+  def show
+    redirect_to edit_admin_genre_path(params[:id])
+  end
+
   def create
     @genre = Genre.new(genre_params)
     @genres = Genre.all
-    @genre.save
-    redirect_to admin_genres_path
+    if @genre.save
+      flash[:notice] = "ジャンルを追加しました。"
+      redirect_to admin_genres_path
+    else
+      flash.now[:alert] = "ジャンルの追加に失敗しました。"
+      render :index
+    end
   end
 
   def edit
     @genre = Genre.find(params[:id])
   end
 
+
   def update
     @genre = Genre.find(params[:id])
-    @genre.update(genre_params)
-    redirect_to admin_genres_path
+    if @genre.update(genre_params)
+      flash[:notice] = "ジャンルを変更しました。"
+      redirect_to admin_genres_path
+    else
+      flash.now[:alert] = "ジャンルの変更に失敗しました。"
+      render :edit
+    end
   end
 
 

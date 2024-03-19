@@ -1,38 +1,44 @@
-<div class="col-sm-7 col-md-5 col-lg-3 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
-  <h3>ジャンル一覧・追加</h3>
-  <div class="row">
-    <div class="col">
-      <%= form_with url: admin_genres_path, model: @genre do |g| %>
-        <div class="form-group row">
-          <label for="genre_name" class="col-sm-3 col-form-label">ジャンル名</label>
-          <div class="col-sm-9 d-flex align-items-center">
-            <%= g.text_field :name, class: 'form-control mr-2' %>
-            <%= g.submit '新規登録', class: "btn btn-success btn-sm" %>
-          </div>
+<div class="container">
+  <div class="row justify-content-center mt-5 mb-5">
+    <div class="col-sm-9 col-md-7 col-lg-5 px-0">
+      <h3 class="text-center mb-4">ジャンル一覧・追加</h3>
+
+      <% if @genre.errors.any? %>
+        <div class="alert alert-danger">
+          <%= @genre.errors.count %>件のエラーが発生しました
+          <ul class="mb-0">
+            <% @genre.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
         </div>
       <% end %>
+
+      <%= form_with url: admin_genres_path, model: @genre, class: "mb-4" do |g| %>
+        <div class="form-group">
+          <%= g.text_field :name, class: 'form-control', placeholder: 'ジャンル名' %>
+        </div>
+        <%= g.submit '新規登録', class: "btn btn-success btn-block" %>
+      <% end %>
+
+      <div>
+        <table class='table table-hover table-inverse'>
+          <thead>
+            <tr>
+              <th>ジャンル</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @genres.each do |ge| %>
+              <tr>
+                <td><%= ge.name %></td>
+                <td><%= link_to '編集する', edit_admin_genre_path(ge), class: "btn btn-outline-primary btn-sm" %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
-  <div>
-    <table class='table table-hover table-inverse'>
-      <thead>
-        <tr>
-          <th>ジャンル</th>
-          <th></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @genres.each do |ge| %>
-          <tr>
-            <td>
-              <%= ge.name %>
-            </td>
-            <td>
-              <%= link_to '編集する', edit_admin_genre_path(ge), class: "btn btn-outline-primary btn-sm" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
   </div>
 </div>
