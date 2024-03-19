@@ -1,23 +1,36 @@
-<h3>ショッピングカート</h3>
-<p></p>
+<div class='container' style="margin-top: 100px; margin-bottom: 100px;">
+  <div class='row justify-content-center'>
+    <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto align-self-center text-start">
+      <h3 class="text-center"><i class="fa-solid fa-shopping-cart"></i> カート <i class="fa-solid fa-shopping-cart"></i></h3>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th>商品名</th>
-      <th>価格</th>
-      <th>数量</th>
-      <th>小計</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @cart_items.each do |cart_item| %>
-      <tr>
-        <td><%= cart_item.item.name %></td>
-        <td>￥<%= number_to_currency(cart_item.item.price * 1.1) %> (税込)</td>
-        <td><%= cart_item.amount %></td>
-        <td>￥<%= number_to_currency((cart_item.item.price * 1.1) * cart_item.amount) %> (税込)</td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+      <% if @cart_items.any? %>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>商品名</th>
+              <th>個数</th>
+              <th>価格</th>
+              <th>小計</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% @cart_items.each do |cart_item| %>
+              <tr>
+                <td><%= cart_item.item.name %></td>
+                <td><%= cart_item.amount %></td>
+                <td>￥<%= number_with_delimiter((cart_item.item.price * 1.1).ceil.to_i, delimiter: ',') %></td>
+                <td>￥<%= number_with_delimiter((cart_item.item.price * 1.1 * cart_item.amount).ceil.to_i, delimiter: ',') %></td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+
+        <div class="text-center">
+          <%= link_to 'レジに進む', new_public_order_path, class: "btn btn-primary" %>
+        </div>
+      <% else %>
+        <p class="text-center">カートに商品がありません。</p>
+      <% end %>
+    </div>
+  </div>
+</div>
