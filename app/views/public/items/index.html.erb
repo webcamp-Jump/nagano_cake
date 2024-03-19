@@ -1,37 +1,27 @@
-<!--ユーザー側の商品一覧ページ-->
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>商品一覧</title>
-  <!-- スタイルシートのリンク -->
-  <link rel="stylesheet" href="/assets/public_items.css">
-</head>
-<body>
-
-<div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
+<div class="col-sm-11 col-md-9 col-lg-7 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
   
   <h2>商品一覧</h2><th><h4>(全<%= @total_items %>件)</h4></th>
   
+<div class="item-grid">
   <% @items.each do |item| %>
-  <div class="item-container">
+    <div class="item-container">
+      
+      <% if item.image.attached? %>
+        <div class="image-wrapper">
+          <%= image_tag url_for(item.image), class: 'img-fluid item-image' %>
+        </div>
+      <% end %>
+      
+      <h4>商品名：<%= link_to item.name, public_item_path(item) %></h4>
+      <h5>価格: ¥ <%= item.price%></h5>
     
-    <% if item.image.attached? %>
-    <!--<div class="container" style="position: relative; text-align: center; width: 800px; height: 500px; overflow: hidden;">-->
-    <%= image_tag url_for(item.image), class: 'img-fluid item-image' %>
-    <% end %>
-    
-    <h4>商品名：<%= link_to item.name, public_item_path(item) %></h4>
-    <h5>価格: ¥ <%= item.price%></h5>
-  
-  </div>
+    </div>
   <% end %>
 </div>
 
-<div class="d-flex justify-content-center" style="margin-top: 50px;">
-  <%= paginate @items %>
-</div>
 
-</body>
-</html>
+    <div class="d-flex justify-content-center" style="margin-top: 50px;">
+      <%= paginate @items %>
+    </div>
+
+</div>
