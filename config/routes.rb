@@ -13,7 +13,6 @@ Rails.application.routes.draw do
 
   get 'public/addresses', to: 'public/addresses#index', as: 'addresses'
   get 'public/addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
-  get 'public/orders/new', to: 'orders#new', as: 'orders_new'
   patch 'public/addresses/:id', to: 'public/addresses#update'
 
   devise_for :admin, controllers: {

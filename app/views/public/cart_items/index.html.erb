@@ -1,15 +1,15 @@
 <div class='container' style="margin-top: 100px; margin-bottom: 100px;">
   <div class='row justify-content-center'>
     <div class="col-sm-12 col-md-10 col-lg-8 px-5 px-sm-0 mx-auto align-self-center text-start">
-      <h3 class="text-center"><i class="fa-solid fa-shopping-cart"></i> カート <i class="fa-solid fa-shopping-cart"></i></h3>
+      <h3 class="text-center"><i class="fa-solid fa-shopping-cart"></i> ショッピングカート <i class="fa-solid fa-shopping-cart"></i></h3>
 
       <% if @cart_items.any? %>
         <table class="table">
           <thead>
             <tr>
               <th>商品名</th>
-              <th>個数</th>
-              <th>価格</th>
+              <th>単価(税込)</th>
+              <th>数量</th>
               <th>小計</th>
             </tr>
           </thead>
@@ -26,7 +26,7 @@
         </table>
 
         <div class="text-center">
-          <%= link_to 'レジに進む', new_public_order_path, class: "btn btn-primary" %>
+          <%= link_to '情報入力に進む', new_public_order_path, class: "btn btn-primary" %>
         </div>
       <% else %>
         <p class="text-center">カートに商品がありません。</p>
