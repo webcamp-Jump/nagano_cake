@@ -1,2 +1,71 @@
-<h1>Public::Orders#confirm</h1>
-<p>Find me in app/views/public/orders/confirm.html.erb</p>
+<h1>注文情報確認</h1>
+
+<div class="row">
+  <div class="col-md-6">
+    <table class="table">
+      <tr>
+        <th class="text-right">商品名</th>
+        <th class="text-right">単価（税込）</th>
+        <th class="text-right">数量</th>
+        <th class="text-right">小計</th>
+      </tr>
+
+      <% sum = 0 %> <!-- 合計金額を初期化 -->
+
+      <% @cart_items.each do |cart_item| %>
+        <% subtotal = cart_item.amount * cart_item.item.price %>
+        <% sum += subtotal %>
+
+        <tr>
+          <td class="text-right">
+            <%= image_tag cart_item.item.image.variant(resize: '50x50', format: 'jpeg') %>
+            <%= cart_item.item.name %>
+          </td>
+          <td class="text-right"><%= cart_item.item.price %></td>
+          <td class="text-right"><%= cart_item.amount %></td>
+          <td class="text-right"><%= subtotal %></td>
+        </tr>
+      <% end %>
+    </table>
+
+    <table class="table">
+      <tr>
+        <th class="text-right">送料</th>
+        <td class="text-right">800</td>
+      </tr>
+      <tr>
+        <th class="text-right">商品合計</th>
+        <td class="text-right"><%= sum %></td>
+      </tr>
+      <tr>
+        <th class="text-right">請求金額</th>
+        <td class="text-right"><%= sum + 800 %></td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="col-md-6">
+    <table class="table">
+      <tr>
+    <th>支払い方法</th>
+　　　<td><%= t("enums.order.payment_method.#{@order.payment_method}") %></td>
+      </tr>
+      <tr>
+        <th>お届け先</th>
+        <td>
+          <%= @order.address %>
+          <%= @order.name %>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2" class="text-right">
+          <%= form_with model: @order, url: public_orders_path, local: true do |f| %>
+            <%= f.hidden_field :order_total, value: sum + 800 %>
+            <%= f.submit "注文を確定する", class: "btn btn-primary" %>
+          <% end %>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+

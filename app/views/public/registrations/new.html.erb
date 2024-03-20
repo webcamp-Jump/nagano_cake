@@ -17,12 +17,12 @@
         <tr>
           <td>名前</td>
           <td class="field">
-            <%= f.label :last_name, "(姓)", class: "mb-2 ml-1" %>
+            <%= f.label :last_name, "(姓)", class: "mb-2 " %>
             <%= f.text_field :last_name, autofocus: true, autocomplete: "last_name", class: "mb-2 mx-3" %>
           </td>
 
           <td class="field">
-            <%= f.label :first_name, "(名)", class: "mb-2 ml-1" %>
+            <%= f.label :first_name, "(名)", class: "mb-2 " %>
             <%= f.text_field :first_name, autofocus: true, autocomplete: "first_name", class: "mb-2 mx-3" %>
           </td>
         </tr>
@@ -30,55 +30,55 @@
         <tr>
           <td>フリガナ</td>
           <td class="field">
-            <%= f.label :last_name_kana, "(セイ)", class: "mb-2 ml-1" %>
-            <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "mb-2" %>
+            <%= f.label :last_name_kana, "(セイ)", class: "mb-2" %>
+            <%= f.text_field :last_name_kana, autofocus: true, autocomplete: "last_name_kana", class: "mb-2 mx-3" %>
           </td>
 
           <td class="field">
             <%= f.label :first_name_kana, "(メイ)" %>
-            <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana" %>
+            <%= f.text_field :first_name_kana, autofocus: true, autocomplete: "first_name_kana", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
         <tr>
           <td>メールアドレス</td>
           <td class="field">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
         <tr>
           <td>郵便番号(ハイフンなし)</td>
           <td class="field">
-            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code" %>
+            <%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
         <tr>
           <td>住所</td>
           <td class="field">
-            <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+            <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
         <tr>
           <td>電話番号(ハイフンなし)</td>
           <td class="field">
-            <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number" %>
+            <%= f.text_field :telephone_number, autofocus: true, autocomplete: "telephone_number", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
         <tr>
           <td>パスワード(6文字以上)</td>
           <td class="field">
-            <%= f.password_field :password, autocomplete: "new-password" %>
+            <%= f.password_field :password, autocomplete: "new-password", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
         <tr>
           <td>パスワード(確認用)</td>
           <td class="field">
-            <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+            <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "mb-2 mx-3" %>
           </td>
         </tr>
 
