@@ -28,13 +28,12 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @order.shipping_cost = 800
-    @order.total_payment = @order.shipping_cost + params[:order][:order_total].to_i
-
-    if @order.save
+    @order.total_payment = calculate_order_total(current_customer.cart_items) + @order.shipping_cost
+    if @order.save!
       create_order_details(@order)
-      current_customer.cart_items.destroy_all # CartItem.destroy_all を CartItem.where(customer_id: current_customer.id)に置き換え
+      current_customer.cart_items.destroy_all
       redirect_to thanks_public_orders_path
     else
       @addresses = current_customer.addresses
@@ -54,8 +53,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:postal_code, :address, :name, :payment_method, :status, :order_total)
-
+    params.require(:order).permit(:customer_id, :postal_code, :address, :name, :payment_method, :status, :shipping_cost, :total_payment)
   end
 
   # 注文合計金額の計算
@@ -71,8 +69,7 @@ class Public::OrdersController < ApplicationController
         order_id: order.id,
         item_id: cart_item.item.id,
         price: cart_item.item.price,
-        number: cart_item.amount,
-        manufacture_status: 0
+        amount: cart_item.amount
       )
       order_details.save!
     end
