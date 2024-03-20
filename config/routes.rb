@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
   get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
 
-  get 'public/addresses', to: 'public/addresses#index', as: 'addresses'
-  get 'public/addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
-  patch 'public/addresses/:id', to: 'public/addresses#update'
+  get 'addresses', to: 'public/addresses#index', as: 'addresses'
+  get 'addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
+  patch 'addresses/:id', to: 'public/addresses#update'
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   post '/customers/sign_in', to: 'public/sessions#create'
 
   namespace :public do
-    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :addresses, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show]
     resources :cart_items, only: [:index, :update, :destroy, :create, :show] do
       delete :destroy_all, on: :collection
