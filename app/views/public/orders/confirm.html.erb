@@ -47,8 +47,8 @@
   <div class="col-md-6">
     <table class="table">
       <tr>
-        <th>支払い方法</th>
-        <td><%= @order.payment_method %></td>
+    <th>支払い方法</th>
+　　　<td><%= t("enums.order.payment_method.#{@order.payment_method}") %></td>
       </tr>
       <tr>
         <th>お届け先</th>

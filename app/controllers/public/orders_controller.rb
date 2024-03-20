@@ -33,6 +33,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.new(order_params)
     @order.shipping_cost = 800
     @order.total_payment = @order.shipping_cost + params[:order][:order_total].to_i
+    
     if @order.save
       create_order_details(@order)
       current_customer.cart_items.destroy_all # CartItem.destroy_all を CartItem.where(customer_id: current_customer.id)に置き換え

@@ -7,6 +7,6 @@ class Order < ApplicationRecord
  enum order_status: {入金待ち:0, 入金確認:1, 製作中:2, 発送準備中:3, 発送済:4}
 #  enum導入　支払い方法
  enum payment_method: { credit_card: 0, transfer: 1 }
- # order_total 属性を追加
-  attr_accessor :order_total
+ 
+ 
 end
