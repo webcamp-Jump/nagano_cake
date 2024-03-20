@@ -1,20 +1,20 @@
 <div class="col-sm-11 col-md-9 col-lg-7 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
-  
+
   <h2>商品一覧</h2><th><h4>(全<%= @total_items %>件)</h4></th>
-  
+
 <div class="item-grid">
   <% @items.each do |item| %>
     <div class="item-container">
-      
+
       <% if item.image.attached? %>
         <div class="image-wrapper">
           <%= image_tag url_for(item.image), class: 'img-fluid item-image' %>
         </div>
       <% end %>
-      
+
       <h4>商品名：<%= link_to item.name, public_item_path(item) %></h4>
       <h5>価格: ¥ <%= item.price%></h5>
-    
+
     </div>
   <% end %>
 </div>

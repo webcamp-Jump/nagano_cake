@@ -1,8 +1,8 @@
 class Public::ItemsController < ApplicationController
 
   def index
-    @items = Item.page(params[:page])
-    @total_items = Item.all.count
+    @items = Item.where(is_active: true).page(params[:page])
+    @total_items = @items.total_count
   end
 
   def show
