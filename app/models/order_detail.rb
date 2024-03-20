@@ -1,7 +1,7 @@
 class OrderDetail < ApplicationRecord
 
   belongs_to :order
-    belongs_to :item
+  belongs_to :item
 
 #製作ステータス
     enum manufacture_status:
