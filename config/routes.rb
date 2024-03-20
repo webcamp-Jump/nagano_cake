@@ -25,7 +25,7 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :addresses, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show] do
+    resources :orders, only: [:new, :index, :show, :create] do
         post 'confirm', on: :collection
         get 'thanks', on: :collection
     end
@@ -47,7 +47,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :order_details, only: [:update]
-    resources :orders, only: [:index, :show]
+    resources :orders, only: [:index, :show, :update]
     resources :customers, only: [:index, :show, :edit, :update]
     resources :genres, only: [:index, :create, :edit, :update, :show]
     resources :items, only: [:index, :new, :create, :show, :edit, :update]
