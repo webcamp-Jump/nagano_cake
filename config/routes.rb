@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
 
@@ -25,11 +24,24 @@ Rails.application.routes.draw do
 
   post '/customers/sign_in', to: 'public/sessions#create'
 
- namespace :public do
-  resources :addresses, only: [:index, :edit, :create, :update, :destroy]
-  resources :orders, only: [:new, :index, :show, :create] do
+
+  namespace :public do
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create] do
     post 'confirm', on: :collection
     get 'thanks', on: :collection
+    end
+    resources :cart_items, only: [:index, :update, :destroy, :create, :show] do
+      delete :destroy_all, on: :collection
+    end
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :registrations, only: [:new, :create]
+    resources :items, except: [:destroy]
+
+    # 修正した部分
+    delete 'cart_items', to: 'cart_items#destroy_all'
+
   end
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     delete :destroy_all, on: :collection # ここにエラーがある可能性があります
