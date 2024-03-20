@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root to: 'public/homes#top'
   get '/about', to: 'public/homes#about', as: 'about'
-
   # 退会処理
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
@@ -12,7 +11,7 @@ Rails.application.routes.draw do
 
   get 'addresses', to: 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
-  patch 'addresses/:id', to: 'public/addresses#update'
+  patch 'public/addresses/:id', to: 'public/addresses#update'
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -26,9 +25,9 @@ Rails.application.routes.draw do
 
   namespace :public do
     resources :addresses, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create] do
-      post 'confirm', on: :collection
-      get 'thanks', on: :collection
+    resources :orders, only: [:new, :index, :show] do
+        post 'confirm', on: :collection
+        get 'thanks', on: :collection
     end
 
     resources :cart_items, only: [:index, :update, :destroy, :create, :show] do
@@ -38,17 +37,13 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
     resources :items, except: [:destroy]
+    # 修正した部分
+    delete 'cart_items', to: 'cart_items#destroy_all'
   end
-
   # Move public/cart_items route definition outside of public namespace
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     delete :destroy_all, on: :collection
   end
-
-  resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
-  resources :sessions, only: [:new, :create, :destroy]
-  resources :registrations, only: [:new, :create]
-  resources :items, except: [:destroy]
 
   namespace :admin do
     resources :order_details, only: [:update]
@@ -60,3 +55,4 @@ Rails.application.routes.draw do
     resources :homes, only: [:top]
   end
 end
+
