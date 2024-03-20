@@ -1,13 +1,18 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
 
+<<<<<<< HEAD
   # 注文入力画面
   def new
     @order = Order.new
     @addresses = current_customer.addresses
+=======
+  def new
+    @order = Order.new
+    @addresses = Address.all
+>>>>>>> origin/develop
   end
 
-  # 注文確認画面
   def confirm
     @order = Order.new(order_params)
     if params[:order][:select_address] == "0"
@@ -20,16 +25,28 @@ class Public::OrdersController < ApplicationController
       @order.address = @address.address
       @order.name = @address.name
     elsif params[:order][:select_address] == "2"
+<<<<<<< HEAD
       @order.customer_id = current_customer.id # Fix typo from 'customar_id' to 'customer_id'
     end
   
     @cart_items = current_customer.cart_items
     @sum = calculate_order_total(@cart_items)
     render :confirm
+=======
+      @order.end_user_id = current_customer.id
+    end
+
+    @cart_items = current_customer.cart_items
+    @order_new = Order.new
+    render :confirm
   end
 
-  # 注文作成処理
+  def thanks
+>>>>>>> origin/develop
+  end
+
   def create
+<<<<<<< HEAD
     @order = Order.new(order_params)
     @order.shipping_cost = 800
     @order.total_payment = @order.shipping_cost + params[:order][:order_total].to_i
@@ -42,23 +59,43 @@ class Public::OrdersController < ApplicationController
       @addresses = current_customer.addresses
       render :new
     end
+=======
+    order = Order.new(order_params)
+    order.save
+    @cart_items = current_customer.cart_items.all
+
+    @cart_items.each do |cart_item|
+      @order_details = OrderDetail.new
+      @order_details.order_id = order.id
+      @order_details.item_id = cart_item.item.id
+      @order_details.price = cart_item.item.price_excluding_tax
+      @order_details.number = cart_item.amount
+      @order_details.manufacture_status = 0
+      @order_details.save!
+    end
+
+    CartItem.destroy_all
+    redirect_to orders_completed_path
+>>>>>>> origin/develop
   end
 
-  # 注文一覧画面
   def index
+<<<<<<< HEAD
     @orders = current_customer.orders
+=======
+    @order = current_customer.orders
+>>>>>>> origin/develop
   end
 
-  # 注文詳細画面
   def show
-    @order = current_customer.orders.find(params[:id])
-    @order_details = @order.order_details
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details.all
   end
 
   private
 
-  # 注文パラメータの許可設定
   def order_params
+<<<<<<< HEAD
     params.require(:order).permit(:postal_code, :address, :name, :payment_method, :status, :order_total)
   
   end
@@ -80,6 +117,15 @@ class Public::OrdersController < ApplicationController
         manufacture_status: 0
       )
       order_details.save!
+=======
+    params.require(:order).permit(:payment_method, :postal_code, :address, :name, :postage, :amount_requested, :end_user_id, :order_status)
+  end
+
+  def cartitem_nill
+    cart_items = current_customer.cart_items
+    if cart_items.blank?
+      redirect_to cart_items_path
+>>>>>>> origin/develop
     end
   end
 end
