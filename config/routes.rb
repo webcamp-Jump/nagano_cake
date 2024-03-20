@@ -25,12 +25,20 @@ Rails.application.routes.draw do
   post '/customers/sign_in', to: 'public/sessions#create'
 
   namespace :public do
+<<<<<<< HEAD
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create] do
+    post 'confirm', on: :collection
+    get 'thanks', on: :collection
+    end
+=======
     resources :addresses, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :create] do
       post 'confirm', on: :collection
       get 'thanks', on: :collection
     end
 
+>>>>>>> origin/develop
     resources :cart_items, only: [:index, :update, :destroy, :create, :show] do
       delete :destroy_all, on: :collection
     end
@@ -40,7 +48,13 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
   end
 
+<<<<<<< HEAD
+    # 修正した部分
+    delete 'cart_items', to: 'cart_items#destroy_all'
+  end
+=======
   # Move public/cart_items route definition outside of public namespace
+>>>>>>> origin/develop
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     delete :destroy_all, on: :collection
   end
@@ -59,4 +73,4 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :homes, only: [:top]
   end
-end
+
