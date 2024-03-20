@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         post 'confirm', on: :collection
         get 'thanks', on: :collection
     end
+
     resources :cart_items, only: [:index, :update, :destroy, :create, :show] do
       delete :destroy_all, on: :collection
     end
@@ -36,9 +37,12 @@ Rails.application.routes.draw do
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
     resources :items, except: [:destroy]
-
     # 修正した部分
     delete 'cart_items', to: 'cart_items#destroy_all'
+  end
+  # Move public/cart_items route definition outside of public namespace
+  resources :cart_items, only: [:index, :update, :destroy, :create] do
+    delete :destroy_all, on: :collection
   end
 
   namespace :admin do
@@ -51,3 +55,4 @@ Rails.application.routes.draw do
     resources :homes, only: [:top]
   end
 end
+
