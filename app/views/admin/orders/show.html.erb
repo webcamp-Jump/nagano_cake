@@ -15,15 +15,15 @@
       <div>
           <p>
           <strong class="col-xs-2">配送先</strong>
-          <%= (@order.customer.postcode).to_s.insert(3, "-") %>
-          <%= @order.customer.city %>
+          <%= (@order.customer.postal_code).to_s.insert(3, "-") %>
+          <%= @order.customer.address %>
           </p>
       </div>
       <br>
       <div>
           <p>
             <strong class="col-xs-2">支払い方法</strong>
-            <%= @order.payment %>
+            <%= @order.payment_method %>
           </p>
       </div>
       <br>
@@ -54,7 +54,7 @@
       <% @order_details.each do |order_detail| %>
       <tbody>
         <tr>
-          <td class="col-xs-4"><%= order_detail.product.name%></td>
+          <td class="col-xs-4"><%= order_detail.item.name%></td>
           <td class="col-xs-2">¥<%= (order_detail.price*1.1).floor.to_s(:delimited) %></td>
           <td><%= order_detail.amount %></td>
           <td class="col-xs-2">¥<%= ((order_detail.price * order_detail.amount*1.1).floor).to_s(:delimited) %></td>
@@ -73,7 +73,7 @@
     <div>
       <p>
         <strong class="col-xs-3">商品合計</strong>
-         ¥<%= (@order.total_fee - @order.shipping).to_s(:delimited)%>
+         ¥<%= (@order.total_payment - @order.shipping_cost).to_s(:delimited)%>
       </p>
     </div>
     <br>
@@ -81,7 +81,7 @@
     <div>
       <p>
         <strong class="col-xs-2">送料</strong>
-        ¥<%= @order.shipping %>
+        ¥<%= @order.shipping_cost %>
       </p>
     </div>
     <br>
@@ -89,7 +89,7 @@
     <div>
       <p>
         <strong class="col-xs-4">請求金額合計</strong>
-        ¥<%= @order.total_fee.to_s(:delimited) %>
+        ¥<%= @order.total_payment.to_s(:delimited) %>
       </p>
     </div>
     <br>

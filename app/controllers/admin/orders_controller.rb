@@ -1,14 +1,17 @@
 class Admin::OrdersController < ApplicationController
-before_action :authenticate_admin!  
-  
+before_action :authenticate_admin!
+
   def index
     @orders = Order.all.page(params[:page]).per(10).order('created_at DESC')
+    @order_details = OrderDetail.where(order_id: @orders.pluck(:id))
   end
+
 
   def show
     @order = Order.find(params[:id])
     @order_details = @order.order_details
   end
+
 
   def update
     @order = Order.find(params[:id])
@@ -17,7 +20,7 @@ before_action :authenticate_admin!
 
     if @order.status == "入金確認"
       @order_details.each do |order_detail|
-        order_detail.make_status = "製作待ち"
+        order_detail.making_status = "製作待ち"
         order_detail.save
       end
     end
