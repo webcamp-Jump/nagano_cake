@@ -5,8 +5,18 @@
       <!-- 上部左端に配置 -->
       <div class="d-lg-flex d-none align-items-center col-lg-2">
         <!-- Nagano Cake テキスト -->
-        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-          Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
+        <% if customer_signed_in? %>
+          <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+            Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
+          <% end %>
+        <% elsif admin_signed_in? %>
+          <%= link_to admin_items_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+            Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
+          <% end %>
+        <% else %>
+          <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+            Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
+          <% end %>
         <% end %>
       </div>
       <!-- 上部中央に配置 -->
@@ -57,7 +67,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to public_items_path,class: 'nav-link text-light' do %>
+                <%= link_to items_path,class: 'nav-link text-light' do %>
                 商品一覧
                 <% end %>
               </li>
@@ -103,7 +113,7 @@
                 <% end %>
               </li>
               <li>
-                <%= link_to public_items_path,class: 'nav-link text-light' do %>
+                <%= link_to items_path,class: 'nav-link text-light' do %>
                 商品一覧
                 <% end %>
               </li>
