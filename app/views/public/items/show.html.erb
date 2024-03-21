@@ -33,9 +33,12 @@
             <%= form.hidden_field :item_id, value: @item.id %>
             <div class="row justify-content-center">
               <div class="col-md-6">
-                <!-- カスタムスタイルのプルダウン -->
-                <%= form.select :amount, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]), { prompt: "個数" }, class: "form-select form-control-sm mb-2" %>
-                <%= form.submit 'カートへ', class: "btn btn-success btn-sm" %>
+                <!-- Bootstrapのカスタムセレクト -->
+                <div class="input-group mb-3">
+                  <%= form.select :amount, options_for_select([1, 2, 3, 4, 5, 6, 7, 8, 9, 10], params[:amount] || 1), class: 'form-select form-control-sm' %>
+                  <div>　</div>
+                  <button class="btn btn-success btn-sm" type="submit">カートへ</button>
+                </div>
               </div>
             </div>
           <% end %>
