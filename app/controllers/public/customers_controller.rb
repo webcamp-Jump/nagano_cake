@@ -14,7 +14,6 @@ before_action :authenticate_customer!
     if @customer.update(customer_params)
       redirect_to public_customers_path, notice: "登録情報が更新されました。"
     else
-      flash.now[:alert] = "必要な情報を入力してください"
       render :edit
     end
   end

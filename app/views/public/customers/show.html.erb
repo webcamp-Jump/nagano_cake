@@ -1,12 +1,12 @@
-<div class="container">
+<div class="container mt-5">
 
     <h1 class>マイページ</h1>
 
-    <h2>登録情報</h2>
-    登録情報<%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
+    <h2 class="my-3">登録情報</h2>
+    登録情報　<%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
 
 
-     <table class="table table-bordered">
+     <table class="table table-bordered my-2">
        <tr>
          <th class="table-secondary w-25">氏名</th>
          <td><%= @customer.last_name %> <%= @customer.first_name %></td>
