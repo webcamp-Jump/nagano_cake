@@ -29,7 +29,7 @@
   <div class="row">
     <div class="col-md-3">
       <h2>ジャンル検索</h2>
-      <%= form_tag(public_items_path, method: :get, class: "form-inline") do %>
+      <%= form_tag(admin_genres_path, method: :get, class: "form-inline") do %>
         <%= select_tag :genre_id, options_from_collection_for_select(@genres, :id, :name, params[:genre_id]), class: "form-control", prompt: "ジャンルを選択してください" %>
         <%= submit_tag "検索", class: "btn btn-primary" %>
       <% end %>
@@ -55,13 +55,13 @@
   <div class="row">
     <% @items.each do |item| %>
       <div class="col-md-3">
-        <%= link_to public_item_path(item) do %>
+        <%= link_to item_path(item) do %>
           <%= image_tag item.image.variant(resize: "100x100"), class: "img-fluid", style: "width: 100px; height: 100px; object-fit: cover; margin-bottom: 20px;" %>
         <% end %>
       </div>
     <% end %>
   </div>
   <div class="all-items-show-button">
-    <%= link_to "全ての商品をみる", public_items_path %>
+    <%= link_to "全ての商品をみる", items_path %>
   </div>
 </div>

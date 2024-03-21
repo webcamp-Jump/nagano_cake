@@ -12,6 +12,11 @@ Rails.application.routes.draw do
   get 'addresses', to: 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
   patch 'public/addresses/:id', to: 'public/addresses#update'
+  
+  # ここから(岩永)
+  get 'items', to: 'public/items#index', as: 'items'
+  get 'items/:id', to: 'public/items#show', as: 'item'
+  # ここまでの追加(岩永)
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -23,20 +28,19 @@ Rails.application.routes.draw do
 
   post '/customers/sign_in', to: 'public/sessions#create'
 
-  namespace :public do
-    resources :addresses, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:new, :index, :show, :create] do
-        post 'confirm', on: :collection
-        get 'thanks', on: :collection
-    end
-
+ namespace :public, path: '' do
+  resources :addresses, only: [:index, :create, :update, :destroy]
+  resources :orders, only: [:new, :create, :index, :show] do
+    post 'confirm', on: :collection
+    get 'thanks', on: :collection
+  end
     resources :cart_items, only: [:index, :update, :destroy, :create, :show] do
+
       delete :destroy_all, on: :collection
     end
     resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
     resources :sessions, only: [:new, :create, :destroy]
     resources :registrations, only: [:new, :create]
-    resources :items, except: [:destroy]
     # 修正した部分
     delete 'cart_items', to: 'cart_items#destroy_all'
   end
@@ -44,7 +48,7 @@ Rails.application.routes.draw do
   resources :cart_items, only: [:index, :update, :destroy, :create] do
     delete :destroy_all, on: :collection
   end
-
+  
   namespace :admin do
     resources :order_details, only: [:update]
     resources :orders, only: [:index, :show, :update]
@@ -55,3 +59,4 @@ Rails.application.routes.draw do
     resources :homes, only: [:top]
   end
 end
+
