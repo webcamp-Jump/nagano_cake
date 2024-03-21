@@ -39,11 +39,9 @@ Rails.application.routes.draw do
     resources :registrations, only: [:new, :create]
     # 修正した部分
     delete 'cart_items', to: 'cart_items#destroy_all'
+    get 'cart_items', to: 'cart_items#index'  # カートアイテムを表示するためのルートを追加
   end
   # Move public/cart_items route definition outside of public namespace
-  resources :cart_items, only: [:index, :update, :destroy, :create] do
-    delete :destroy_all, on: :collection
-  end
 
   namespace :admin do
     resources :order_details, only: [:update]

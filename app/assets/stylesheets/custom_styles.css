@@ -72,3 +72,8 @@
       font-size: 24px;
     }
   }
+
+  .your-link-class {
+  color: black; /* リンクの色を黒に設定 */
+  /* 他のスタイルを追加する場合はここに追加 */
+}

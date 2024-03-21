@@ -8,7 +8,7 @@
           <%= @genre.errors.count %>件のエラーが発生しました
           <ul class="mb-0">
             <% @genre.errors.full_messages.each do |message| %>
-              <li><%= message %></li>
+              <li><%= message.gsub("Genre", "ジャンル").gsub("Price", "価格").gsub("Name", "ジャンル").gsub("Image", "商品画像").gsub("Introduction", "商品説明") %></li>
             <% end %>
           </ul>
         </div>

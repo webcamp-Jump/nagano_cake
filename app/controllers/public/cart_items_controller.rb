@@ -16,7 +16,7 @@ def create
   if existing_cart_item
     existing_cart_item.amount += cart_item_params[:amount].to_i
     if existing_cart_item.save
-      redirect_to cart_items_path, notice: 'カート内の商品数量を更新しました。'
+      redirect_to public_cart_items_path, notice: 'カート内の商品数量を更新しました。'
     else
       logger.error existing_cart_item.errors.full_messages.join(', ')
       redirect_to root_path, alert: 'カートの商品数量を更新できませんでした。'
