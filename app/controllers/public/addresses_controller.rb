@@ -8,7 +8,7 @@ before_action :authenticate_customer!
     if @address.save
       redirect_to addresses_path, notice: "配送先が登録されました。"
     else
-      flash.now[:alert] = "必要な情報を入力してください"
+      @addresses = current_customer.addresses
       render :index
     end
   end
