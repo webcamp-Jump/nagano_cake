@@ -4,19 +4,15 @@ Rails.application.routes.draw do
   # 退会処理
   get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
   patch '/customers/withdraw', to: 'public/customers#withdraw'
-  
+
   get '/admin', to: 'admin/homes#top', as: 'admin_root'
   get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
   get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
-  
+
   get 'addresses', to: 'public/addresses#index', as: 'addresses'
   get 'addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
   patch 'public/addresses/:id', to: 'public/addresses#update'
-  
-  # ここから(岩永)
-  get 'items', to: 'public/items#index', as: 'items'
-  get 'items/:id', to: 'public/items#show', as: 'item'
-  # ここまでの追加(岩永)
+
 
   devise_for :admin, controllers: {
     sessions: "admin/sessions"
@@ -28,13 +24,13 @@ Rails.application.routes.draw do
 
   post '/customers/sign_in', to: 'public/sessions#create'
 
-  namespace :public do
+  namespace :public, path: '' do
     resources :addresses, only: [:index, :create, :update, :destroy]
     resources :orders, only: [:new, :index, :show, :create] do
         post 'confirm', on: :collection
         get 'thanks', on: :collection
     end
-
+    resources :items, except: [:destroy]
     resources :cart_items, only: [ :update, :destroy, :create, :show] do
       delete :destroy_all, on: :collection
     end
