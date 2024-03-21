@@ -14,7 +14,7 @@
     <% @orders.each do |order| %>
       <tbody>
         <tr>
-          <td><%= order.created_at.to_s(:datetime_jp) %></td>
+          <td><%= order.created_at.in_time_zone('Tokyo').strftime("%Y-%m-%d %H:%M ") %></td>
           <td>
             <%= order.postal_code %><br/>
             <%= order.address %><br/>
