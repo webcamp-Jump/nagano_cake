@@ -14,8 +14,8 @@ class Customer < ApplicationRecord
   validates :last_name, :first_name, format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}]{1,10}\z/, message: "は漢字、ひらがな、全角カタカナのみで10文字以内で入力してください" }
   # カタカナで15文字以内あること
   validates :last_name_kana, :first_name_kana, format: { with: /\A[\p{Katakana}ー－]+\z/, message: "はカタカナのみで15文字以内で入力してください" }
-  # メールアドレスは半角英数字と半角記号で50文字以内
-  validates :email, format: { with: /\A[a-zA-Z0-9._%+-]*@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}\z/, message: "は半角英数字と半角記号で50文字以内で入力してください" }
+  # メールアドレス
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP, message: "は有効な形式で入力してください" }
   #郵便番号半角数字で7文字
   validates :postal_code, format: { with: /\A\d{7}\z/, message: "は半角数字のみで7文字で入力してください" }
   # 住所は50文字以内
