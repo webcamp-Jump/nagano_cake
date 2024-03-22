@@ -22,11 +22,16 @@ before_action :authenticate_admin!
         order_detail.making_status = "製作待ち"
         order_detail.save
       end
+      render :show
     end
-    redirect_to admin_order_path(@order)
+  # リダイレクトを削除して、そのままのページに留まる
   end
-  
-  private
+#ただし、ページをリロードするとフォームが再送信される可能性があるため、
+#更新処理が再度実行されてしまいます。
+#この問題を回避するには、Ajaxを使用して非同期更新を行う方法
+#が考えられます。
+
+    private
 
   def order_params
     params.require(:order).permit(:status)
