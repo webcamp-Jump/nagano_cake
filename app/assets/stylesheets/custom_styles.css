@@ -83,3 +83,7 @@ main {
   flex-direction: column;
   min-height: 100vh; /* 画面の高さいっぱいに表示 */
 }
+
+a {
+  color: #a0522d; /* リンクのテキスト色を茶色に設定 */
+}
