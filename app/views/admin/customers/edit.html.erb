@@ -1,5 +1,6 @@
 <!--管理者側の会員情報編集ページ-->
 <div class="col-sm-9 col-md-7 col-lg-5 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
+
 <h4><%= @customer.last_name %> <%= @customer.first_name %> さんの会員情報編集</h4>
 
 <%= form_with(model: @customer, url: admin_customer_path(@customer), local: true) do |form| %>
@@ -91,6 +92,7 @@
       <td>
         <%= form.radio_button :is_active, true, id: "customer_is_active_true" %>
         <%= form.label :is_active, "有効", value: true, for: "customer_is_active_true" %>
+        
         <%= form.radio_button :is_active, false, id: "customer_is_active_false" %>
         <%= form.label :is_active, "退会", value: false, for: "customer_is_active_false" %>
       </td>
