@@ -1,4 +1,5 @@
 class Customer < ApplicationRecord
+  after_save :check_active_status
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -8,7 +9,7 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :orders
 
-  # # 全て空でないこと
+  # 全て空でないこと
   # validates :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :telephone_number, :postal_code, :address, :is_active, presence: true, on: [:create, :login]
   # # 漢字とひらがな、全角カタカナで10文字以内あること
   # validates :last_name, :first_name, format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}]{1,10}\z/, message: "は漢字、ひらがな、全角カタカナのみで10文字以内で入力してください" }
@@ -40,4 +41,12 @@ class Customer < ApplicationRecord
     "#{last_name} #{first_name}"
   end
 
+  private
+
+  def check_active_status
+   if saved_change_to_is_active? && !is_active
+    # 顧客が退会処理を行った場合の処理
+    self.update(is_active: false) # 退会ステータスを更新
+   end
+  end
 end
