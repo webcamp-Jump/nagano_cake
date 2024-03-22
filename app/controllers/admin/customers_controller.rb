@@ -1,6 +1,7 @@
 class Admin::CustomersController < ApplicationController
   
   before_action :authenticate_admin!
+  
   def index
     @customers = Customer.all
     @customers = Customer.page(params[:page]) #ページネーション
@@ -16,15 +17,17 @@ class Admin::CustomersController < ApplicationController
 
   def update
     @customer = Customer.find(params[:id])
-    @customer.update(customer_params)
-    redirect_to admin_customers_path(@customer)
+    if @customer.update(customer_params)
+      redirect_to admin_customer_path(@customer), notice: "顧客情報が正常に更新されました"
+    else
+      render :edit
+    end
   end
-
 
   private
 
   def customer_params
-    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :telephone_number, :postal_code, :address)
+    params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :telephone_number, :postal_code, :address, :email, :is_active)
   end
-end
 
+end
