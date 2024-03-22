@@ -23,23 +23,16 @@ before_action :authenticate_customer!
 
   def withdraw
     @customer = Customer.find(current_customer.id)
-    @customer.update(is_deleted: true)
+    @customer.update(is_deleted: true, is_active: false) # 会員ステータスを退会に変更
     reset_session
     flash[:notice] = "退会処理を実行いたしました"
     redirect_to root_path
   end
-
+  
   private
 
   def customer_params
     params.require(:customer).permit(:last_name, :first_name, :last_name_kana, :first_name_kana, :email, :postal_code, :address, :telephone_number, :password, :password_confirmation)
   end
-
-  # def ensure_correct_customer
-  # customer = Customer.find(params[:id])
-  # unless customer.id == current_customer.id
-  #   redirect_to root_path
-  # end
-  # end
 
 end
