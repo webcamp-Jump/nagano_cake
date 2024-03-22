@@ -5,7 +5,14 @@
      <h1 class="mb-4 mt-5"><%= @customer.last_name %> <%= @customer.first_name %>さんの会員情報編集</h1>
     
       <%= form_with model: @customer, url: public_customer_path(@customer), method: :patch, local: true do |f| %>
-       <% render "public/shared/error_messages", resource: @customer %>
+       <% if @customer.errors.any? %>
+          <%= @customer.errors.count %>件のエラーが発生しました
+          <ul>
+            <% @customer.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        <% end %>
     
          <div class="row">
               <lavel class="col-lg-3">氏名</lavel>

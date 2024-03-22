@@ -12,6 +12,9 @@ class Public::SessionsController < Devise::SessionsController
      root_path
   end
 
+  # def login
+  # # ログイン処理
+  # end
 
   # ログアウト後のリダイレクト先
   private
@@ -37,7 +40,7 @@ class Public::SessionsController < Devise::SessionsController
     else
       flash[:notice] = "該当するユーザーが見つかりません"
     end
-  end
+ end
 end
 
 

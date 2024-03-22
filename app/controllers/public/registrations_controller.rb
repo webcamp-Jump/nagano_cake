@@ -6,6 +6,10 @@ class Public::RegistrationsController < Devise::RegistrationsController
   def configure_sign_up_params
     devise_parameter_sanitizer.permit(:sign_up, keys:[:last_name, :first_name, :last_name_kana, :first_name_kana, :telephone_number, :postal_code, :address])
   end
+  
+  # def create
+  # # 新規登録処理
+  # end
 
   # before_action :configure_account_update_params, only: [:update]
 
