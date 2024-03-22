@@ -4,9 +4,8 @@
     <div class="container">
       <div class="row">
         <div class="col">
-        
-    
-    <h4><%= @customer.last_name %> <%= @customer.first_name %> さんの会員詳細</h4>
+          
+          <h4><%= @customer.last_name %> <%= @customer.first_name %> さんの会員詳細</h4>
     
       
     <table>
@@ -61,7 +60,7 @@
         <th></th>
         <td><%= link_to '編集する', edit_admin_customer_path(@customer.id), class: "btn btn-success" %></td>
         <td></td>
-        <td><%= link_to '注文履歴一覧を見る', admin_root_path, class: "btn btn-primary" %></td>
+        <td><%= link_to '注文履歴一覧を見る', admin_orders_path(@customer.id), class: "btn btn-primary" %></td>
       </tr>
     </table>
     
