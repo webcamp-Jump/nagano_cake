@@ -11,6 +11,7 @@ class Admin::ItemsController < ApplicationController
 
   def create
     @item = Item.new(item_params)
+    @genres = Genre.all
     if @item.save
      flash[:notice] = "商品を追加しました。"
       redirect_to admin_item_path(@item.id)

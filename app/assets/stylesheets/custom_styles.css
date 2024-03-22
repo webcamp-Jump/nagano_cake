@@ -72,3 +72,14 @@
       font-size: 24px;
     }
   }
+
+  .your-link-class {
+  color: black; /* リンクの色を黒に設定 */
+  /* 他のスタイルを追加する場合はここに追加 */
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* 画面の高さいっぱいに表示 */
+}
