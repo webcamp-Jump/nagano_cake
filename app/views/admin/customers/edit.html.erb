@@ -8,7 +8,7 @@
       <%= form_with(model: @customer, url: admin_customer_path(@customer), local: true) do |form| %>
         <%= render "public/shared/error_messages", resource: @customer %>
         
-        <table>
+        <table class="form-group d-flex align-items-center mt-4">
           <thead>
             <tr>
               <th></th>
@@ -17,27 +17,34 @@
           
           <tbody>
             <tr>
-              <th class="nowrap">会員ID</th>
+              <th class="nowrap col-md-4">会員ID</th>
               <td><%= @customer.id %></td>
             </tr>
             
+            <tr>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+            </tr>
+            
              <tr>
-               <th class="nowrap">氏名</th>
+               <th class="nowrap col-md-4">氏名</th>
                <td>
                  <div class="row g-3">
-                   <div class="col">
+                   <div class="col-md-6"> 
                      <%= form.text_field :last_name, class: 'form-control' %>
                    </div>
-                   <div class="col">
+                   <div class="col-md-6"> 
                      <%= form.text_field :first_name, class: 'form-control'%>
                    </div>
                 </div>
                </td>
              </tr>
              
+             <tr>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+            </tr>
              
              <tr>
-               <th class="nowrap">フリガナ</th>
+               <th class="nowrap col-md-4">フリガナ</th>
                <td>
                  <div class="row g-3">
                    <div class="col">
@@ -51,7 +58,11 @@
              </tr>
              
              <tr>
-               <th class="nowrap">郵便番号</th>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+            </tr>
+             
+             <tr>
+               <th class="nowrap col-md-4">郵便番号</th>
                <td>
                  <div class="row g-3">
                    <div class="col">
@@ -62,7 +73,11 @@
              </tr>
              
              <tr>
-               <th class="nowrap">住所</th>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+            </tr>
+             
+             <tr>
+               <th class="nowrap col-md-4">住所</th>
                <td>
                  <div class="row g-3">
                    <div class="col">
@@ -73,7 +88,11 @@
              </tr>
              
              <tr>
-               <th class="nowrap">電話番号</th>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+            </tr>
+             
+             <tr>
+               <th class="nowrap col-md-4">電話番号</th>
                <td>
                  <div class="row g-3">
                    <div class="col">
@@ -84,7 +103,11 @@
              </tr>
              
              <tr>
-               <th class="nowrap">メールアドレス</th>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+            </tr>
+             
+             <tr>
+               <th class="nowrap col-md-4">メールアドレス</th>
                <td>
                  <div class="row g-3">
                    <div class="col">
@@ -93,16 +116,21 @@
                  </div>
                </td>
              </tr>
-
+             
+             <tr>
+              <td colspan="2"></td> <!-- colspan="2" は、2列に合わせるために追加 -->
+             </tr>
 
              <tr>
-               <td>会員ステータス</td>
+               <th class="nowrap col-md-4">会員ステータス</td>
                 <td>
-                  <%= form.radio_button :is_active, true, id: "customer_is_active_true" %>
-                  <%= form.label :is_active, "有効", value: true, for: "customer_is_active_true" %>
+                  <div class="row g-3">
+                   <div class="col">
+                     <%= form.radio_button :is_active, true, id: "customer_is_active_true" %>
+                     <%= form.label :is_active, "有効", value: true, for: "customer_is_active_true" %>
         
-                  <%= form.radio_button :is_active, false, id: "customer_is_active_false" %>
-                  <%= form.label :is_active, "退会", value: false, for: "customer_is_active_false" %>
+                     <%= form.radio_button :is_active, false, id: "customer_is_active_false" %>
+                     <%= form.label :is_active, "退会", value: false, for: "customer_is_active_false" %>
                 </td>
              </tr>
 
