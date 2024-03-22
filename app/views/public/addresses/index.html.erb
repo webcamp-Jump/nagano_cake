@@ -2,7 +2,14 @@
 
  <h2>配送先一覧</h2>
   <%= form_with model: @address, url: public_addresses_path, method: :post do |f| %>
-  <%= render "public/shared/error_messages", resource: @address %>
+   <% if @address.errors.any? %>
+      <%= @address.errors.count %>件のエラーが発生しました
+      <ul>
+        <% @address.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    <% end %>
 
   <table>
    <tr>
