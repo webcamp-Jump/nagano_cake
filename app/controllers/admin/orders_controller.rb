@@ -12,29 +12,37 @@ before_action :authenticate_admin!
     @order_details = @order.order_details
   end
 
-  def update
-    @order = Order.find(params[:id])
-    @order.update(order_params)
-    @order_details = @order.order_details
+def update
+  @order_detail = OrderDetail.find(params[:id])
+  @order_detail.update(making_status: params[:order_detail][:making_status])
+  order = @order_detail.order
   
-    if @order.status == "入金確認"
-      @order_details.each do |order_detail|
-        order_detail.making_status = "製作待ち"
-        order_detail.save
-      end
-      render :show
-    end
-  # リダイレクトを削除して、そのままのページに留まる
+  if params[:order_detail][:making_status] == "in_making"
+    order.update(status: "making")
+  elsif is_all_order_details_making_completed(order)
+    order.update(status: 'shipping_in_process')
   end
-#ただし、ページをリロードするとフォームが再送信される可能性があるため、
-#更新処理が再度実行されてしまいます。
-#この問題を回避するには、Ajaxを使用して非同期更新を行う方法
-#が考えられます。
+  
+  flash[:notice] = "更新に成功しました。"
+  redirect_to admin_order_path(@order_detail.order.id)
+end
 
     private
 
   def order_params
-    params.require(:order).permit(:status)
+   params.require(:order).permit(:status, order_details_attributes: [:making_status])
+  end
+  
+  def is_all_order_details_making_completed(order)
+    order.order_details.all? { |order_detail| order_detail.making_status == 'making_completed' }
   end
 
+  def is_all_order_details_making_completed(order)
+      order.order_details.each do |order_detail|
+        if order_detail.making_status != 'making_completed'
+          return false 
+        end
+      end
+      return true 
+    end  
 end
