@@ -6,15 +6,15 @@
 
       <%= form_with model: @customer, url: public_customer_path(@customer), method: :patch, local: true do |f| %>
        <% if @customer.errors.any? %>
-        <div class="alert alert-danger">
+       <div class="alert alert-danger">
           <%= @customer.errors.count %>件のエラーが発生しました
           <ul class="mb-0">
             <% @customer.errors.full_messages.each do |message| %>
               <li><%= message.gsub("last_name", "姓").gsub("first_name", "名").gsub("Name", "フリガナ(姓)").gsub("Image", "フリガナ(名)").gsub("Introduction", "郵便番号").gsub("Address", "住所").gsub("telephone_number", "電話番号").gsub("Email", "メールアドレス")  %></li>
             <% end %>
+            </div>
           </ul>
         <% end %>
-
          <div class="row">
               <lavel class="col-lg-3">氏名</lavel>
               <div class="col-lg-3">
