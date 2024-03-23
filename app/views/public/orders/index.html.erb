@@ -1,4 +1,4 @@
-<div class="container">
+<div class="col-sm-12 col-md-12 col-lg-6 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
   <h3>注文履歴一覧</h3>
   <table class="order-table table">
     <thead>
@@ -21,9 +21,17 @@
             <%= order.name %>
           </td>
           <td>
+            <table>
             <% order.order_details.each do |order_detail| %>
+            <tbody>
+              <tr>
+                <td>
               <%= order_detail.item.name %>
+              </td>
+              </tr>
+            </tbody>
             <% end %>
+            </table>
           </td>
           <td><%= "#{order.total_payment.to_s(:delimited)}" %>円</td>
           <td><%= order.status %></td>

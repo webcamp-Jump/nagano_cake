@@ -13,19 +13,33 @@ before_action :authenticate_admin!
   end
 
 def update
-  @order_detail = OrderDetail.find(params[:id])
-  @order_detail.update(making_status: params[:order_detail][:making_status])
-  order = @order_detail.order
-  
-  if params[:order_detail][:making_status] == "in_making"
-    order.update(status: "making")
-  elsif is_all_order_details_making_completed(order)
-    order.update(status: 'shipping_in_process')
+  @order = Order.find(params[:id])
+  @order.update(order_params)
+  @order_details = @order.order_details
+
+  if @order.status == "入金確認"
+    @order_details.each do |order_detail|
+      order_detail.update(making_status: "製作待ち")
+    end
   end
-  
-  flash[:notice] = "更新に成功しました。"
-  redirect_to admin_order_path(@order_detail.order.id)
+
+  # 製作中の商品があるかどうかを確認
+  if @order_details.any? { |order_detail| order_detail.making_status == "製作中" }
+    @order.update(status: "製作中")
+  else
+    @order.update(status: "入金確認") # 製作中の商品がない場合は注文ステータスを元に戻す
+  end
+
+  # 全ての商品が製作完了かどうかを確認
+  if @order_details.all? { |order_detail| order_detail.making_status == "製作完了" }
+    @order.update(status: "発送準備中")
+  end
+
+  @order.save # 自動更新のために変更内容を保存する
+
+  render :show
 end
+
 
     private
 
@@ -37,12 +51,5 @@ end
     order.order_details.all? { |order_detail| order_detail.making_status == 'making_completed' }
   end
 
-  def is_all_order_details_making_completed(order)
-      order.order_details.each do |order_detail|
-        if order_detail.making_status != 'making_completed'
-          return false 
-        end
-      end
-      return true 
-    end  
+
 end

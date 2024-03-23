@@ -5,6 +5,19 @@ ja:
         credit_card: "クレジットカード"
         transfer: "銀行振込"
   activerecord:
+    attributes:
+      customer:
+        email: メールアドレス
+        encrypted_password: 確認用パスワード
+        last_name: 姓
+        first_name: 名
+        last_name_kana: セイ
+        first_name_kana: メイ
+        telephone_number: 電話番号
+        postal_code: 郵便番号
+        address: 住所
+      address:
+        postal_code: 郵便番号
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
@@ -21,7 +34,7 @@ ja:
     - 金
     - 土
     abbr_month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -47,7 +60,7 @@ ja:
       long: "%Y年%m月%d日(%a)"
       short: "%m/%d"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
