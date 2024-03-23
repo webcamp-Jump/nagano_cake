@@ -41,11 +41,15 @@ def update
 end
 
 
-
     private
 
   def order_params
-    params.require(:order).permit(:status)
+   params.require(:order).permit(:status, order_details_attributes: [:making_status])
   end
+  
+  def is_all_order_details_making_completed(order)
+    order.order_details.all? { |order_detail| order_detail.making_status == 'making_completed' }
+  end
+
 
 end
