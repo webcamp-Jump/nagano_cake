@@ -18,6 +18,10 @@ ja:
         address: 住所
       address:
         postal_code: 郵便番号
+      order:
+        name: 宛名
+        address: 住所
+        postal_code: 郵便番号
     errors:
       messages:
         record_invalid: 'バリデーションに失敗しました: %{errors}'
