@@ -9,8 +9,8 @@ class Customer < ApplicationRecord
   has_many :cart_items
   has_many :orders
 
-  # 全て空でないこと
-  # validates :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :telephone_number, :postal_code, :address, :is_active, presence: true, on: [:create, :login]
+  #全て空でないこと
+   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :telephone_number, :postal_code, :address, :is_active, presence: true
   # # 漢字とひらがな、全角カタカナで10文字以内あること
   # validates :last_name, :first_name, format: { with: /\A[\p{Han}\p{Hiragana}\p{Katakana}]{1,10}\z/, message: "は漢字、ひらがな、全角カタカナのみで10文字以内で入力してください" }
   # # カタカナで15文字以内あること
