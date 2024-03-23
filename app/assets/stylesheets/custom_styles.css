@@ -79,6 +79,16 @@
 }
 
 main {
+  background-image: url('karihaikei.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  margin: 0; /* 上下のマージンをゼロに設定 */
+  padding: 0; /* 上下のパディングをゼロに設定 */
+}
+
+
+main {
   display: flex;
   flex-direction: column;
   min-height: 100vh; /* 画面の高さいっぱいに表示 */

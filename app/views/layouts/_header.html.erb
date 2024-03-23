@@ -3,22 +3,24 @@
   <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a0522d;">
     <div class="container">
       <!-- 上部左端に配置 -->
-      <div class="d-lg-flex d-none align-items-center col-lg-4">
-        <!-- Nagano Cake テキスト -->
-        <% if customer_signed_in? %>
-          <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-            Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
-          <% end %>
-        <% elsif admin_signed_in? %>
-          <%= link_to admin_items_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-            Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
-          <% end %>
-        <% else %>
-          <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
-            Nagano <%= content_tag(:i, "", class: "fa-solid fa-cake-candles") %> Cake
-          <% end %>
+     <div class="d-lg-flex d-none align-items-center col-lg-4 mr-auto">
+      <!-- Nagano Cake テキスト -->
+      <% if customer_signed_in? %>
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag("nagano_cake1.jpg", alt: "Nagano Cake", size: "100x100") %>
         <% end %>
-      </div>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_items_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag("nagano_cake1.jpg", alt: "Nagano Cake", size: "100x100") %>
+        <% end %>
+      <% else %>
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag("nagano_cake1.jpg", alt: "Nagano Cake", size: "100x100") %>
+        <% end %>
+      <% end %>
+    </div>
+
+
       <!-- 上部中央に配置 -->
       <div class=" d-lg-flex d-none align-items-center col-lg-8">
         <!-- 検索ボックス -->
