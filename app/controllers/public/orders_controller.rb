@@ -1,10 +1,10 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @orders = current_customer.orders.page(params[:page])
   end
-  
+
   def new
     @order = Order.new
     @addresses = current_customer.addresses
@@ -29,7 +29,6 @@ class Public::OrdersController < ApplicationController
       redirect_to thanks_public_orders_path
     else
       @addresses = current_customer.addresses
-      flash.now[:error] = @order.errors.full_messages.join(', ')
       render :new
     end
   end
@@ -38,7 +37,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
   end
-  
+
   private
 
   def order_params
