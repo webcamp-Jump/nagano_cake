@@ -29,6 +29,7 @@ class Public::OrdersController < ApplicationController
       redirect_to thanks_public_orders_path
     else
       @addresses = current_customer.addresses
+      flash.now[:error] = @order.errors.full_messages.join(', ')
       render :new
     end
   end
