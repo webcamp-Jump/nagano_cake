@@ -27,7 +27,7 @@ ja:
         updated_at: 更新日
     models:
       user: ユーザー
-      customer: "お客さま"
+      customer: "お客さまの情報"
   devise:
     confirmations:
       confirmed: メールアドレスが確認できました。
@@ -143,4 +143,3 @@ ja:
        one:  "%{resource} の情報は以下の理由により保存できませんでした。"
        other: "%{count} 件のエラーが発生したため %{resource} は保存されませんでした。"
        devise:
-    
