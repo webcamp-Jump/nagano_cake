@@ -1,3 +1,4 @@
 class Genre < ApplicationRecord
-  validates :name, presence: { message: "を選択してください" }
+  validates :name, presence: true
+
 end
