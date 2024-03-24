@@ -83,8 +83,9 @@ main {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  margin: 0; /* 上下のマージンをゼロに設定 */
-  padding: 0; /* 上下のパディングをゼロに設定 */
+  margin: 0;
+  padding: 0;
+  height: 100vh; /* ビューポートの高さに設定 */
 }
 
 

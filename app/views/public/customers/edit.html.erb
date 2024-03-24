@@ -16,7 +16,7 @@
         <% end %>
 
          <div class="row">
-              <lavel class="col-lg-3">氏名</lavel>
+              <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">氏名</label>
               <div class="col-lg-3">
                 <%= f.text_field :last_name,autofocus: true, autocomplete: "last_name", class: 'form-control' %>
               </div>
@@ -26,7 +26,7 @@
          </div><br>
 
          <div class="row">
-              <lavel class="col-lg-3">フリガナ</lavel>
+              <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">フリガナ</label>
               <div class="col-lg-3">
                 <%= f.text_field :last_name_kana,autofocus: true, autocomplete: "last_name_kana",class: 'form-control' %>
               </div>
@@ -36,37 +36,37 @@
          </div><br>
 
          <div class="row">
-              <lavel class="col-lg-3">郵便番号</lavel>
+              <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">郵便番号</label>
               <div class="col-lg-3">
                 <%= f.text_field :postal_code,autofocus: true, autocomplete: "postal_code",class: 'form-control' %>
               </div>
          </div><br>
 
          <div class="row">
-              <lavel class="col-lg-3">住所</lavel>
+              <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">住所</label>
               <div class="col-lg-6">
                 <%= f.text_field :address,autofocus: true, autocomplete: "address",class: 'form-control' %>
               </div>
          </div><br>
 
          <div class="row">
-              <lavel class="col-lg-3">電話番号</lavel>
+              <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">電話番号</label>
               <div class="col-lg-6">
                 <%= f.text_field :telephone_number,autofocus: true, autocomplete: "telephone_number",class: 'form-control' %>
               </div>
          </div><br>
 
          <div class="row">
-              <lavel class="col-lg-3">メールアドレス</lavel>
+              <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">メールアドレス</label>
               <div class="col-lg-4">
                 <%= f.text_field :email,autofocus: true, autocomplete: "email",class: 'form-control' %>
               </div>
          </div><br>
 
 
-         <div class="row">
-          <div class="col-md-3"> <%= f.submit "編集内容を保存", class: "btn btn-success" %></div>
-            <div class="col-lg-6 col-lg-offset-3"><%= link_to "退会する", public_customers_unsubscribe_path, class: "btn btn-danger" %></div>
+         <div class="row justify-content-center">
+            <div class="col-md-3  mb-3 ml-5"> <%= f.submit "編集内容を保存", class: "btn btn-success" %></div>
+            <div class="col-md-3 mb-3 mx-4"><%= link_to "退会する", public_customers_unsubscribe_path, class: "btn btn-danger" %></div>
          </div>
 
      <% end %>
