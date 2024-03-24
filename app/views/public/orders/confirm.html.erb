@@ -21,9 +21,9 @@
       <%= cart_item.item.name %>
       <!--%= image_tag cart_item.item.image.variant(resize: '50x50', format: 'jpeg') %-->
     </td>
-    <td class="text-right"><%= number_to_currency(cart_item.item.price, unit: '￥', format: "%u%n") %></td>
+    <td class="text-right"><%= number_to_currency(cart_item.item.price * 1.1, unit: '￥', format: "%u%n") %></td>
     <td class="text-right"><%= cart_item.amount %></td>
-    <td class="text-right"><%= number_to_currency(subtotal, unit: '￥', format: "%u%n") %></td>
+    <td class="text-right"><%= number_to_currency(subtotal * 1.1, unit: '￥', format: "%u%n") %></td>
   </tr>
 <% end %>
 </table>

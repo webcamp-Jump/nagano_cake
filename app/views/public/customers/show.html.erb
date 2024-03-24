@@ -6,7 +6,7 @@
     登録情報　<%= link_to "編集する", public_customers_information_edit_path, class: "btn btn-success" %>
 
 
-     <table class="table table-bordered my-2">
+     <table class="table table-bordered my-2" style="overflow: hidden; border-radius: 20px;">
        <tr>
          <th class="table-secondary w-25" style="background-color: #a0522d; color: #FAEBD7;">氏名</th>
          <td class="telephone-number" style="background-color: #eee0ce;"><%= @customer.last_name %> <%= @customer.first_name %></td>

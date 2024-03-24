@@ -25,8 +25,8 @@
       <div class=" d-lg-flex d-none align-items-center col-lg-8">
         <!-- 検索ボックス -->
         <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="検索" aria-label="検索">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">検索</button>
+          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="検索">
+          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
         </form>
       </div>
     </div>
@@ -40,7 +40,7 @@
         <% if customer_signed_in? %>
           <span class="text-light mr-12"><%= current_customer.last_name %> さまようこそ</span>
         <% elsif admin_signed_in? %>
-          <span class="text-light mr-12">管理者</span>
+          <span class="text-light mr-12">Administrator</span>
         <% end %>
       </div>
       <!--下部右に配置-->
@@ -53,22 +53,22 @@
           <ul class="navbar-nav ml-auto">
             <!-- ログインしていない場合 -->
             <% unless admin_signed_in? || customer_signed_in? %>
-              <li>
+              <li class="header_text">
                 <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
-                  <i class="fa-solid fa-user-plus"></i>新規登録
+                  SignUp
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to new_customer_session_path,class: 'nav-link text-light' do %>
-                  ログイン
+                  Log in
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to public_items_path,class: 'nav-link text-light' do %>
-                商品一覧
+                Items
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to about_path,class: 'nav-link text-light' do %>
                 About
                 <% end %>
@@ -76,52 +76,52 @@
             <% end %>
             <!-- 管理者がログインしている場合 -->
             <% if admin_signed_in? %>
-              <li>
+              <li class="header_text">
                 <%= link_to admin_items_path,class: 'nav-link text-light' do %>
-                  商品一覧
+                  Items
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
-                会員一覧
+                Customers
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to admin_orders_path,class: 'nav-link text-light' do %>
-                注文履歴一覧
+                  Order history
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
-                ジャンル一覧
+                Genres
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
-                ログアウト
+                Log out
                 <% end %>
               </li>
             <% end %>
             <!-- 顧客がログインしている場合 -->
             <% if customer_signed_in? %>
-              <li>
+              <li class="header_text">
                 <%= link_to public_customers_path,class: 'nav-link text-light' do %>
-                マイページ
+                MyPage
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to public_items_path,class: 'nav-link text-light' do %>
-                商品一覧
+                Items
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to public_cart_items_path,class: 'nav-link text-light' do %>
-                カート
+                Cart
                 <% end %>
               </li>
-              <li>
+              <li class="header_text">
                 <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
-                ログアウト
+                Log out
                 <% end %>
               </li>
             <% end %>

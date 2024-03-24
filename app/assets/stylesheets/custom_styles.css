@@ -1,5 +1,6 @@
 
 
+
 .flash-message {
   text-align: center;
   border-radius: 5px;
@@ -85,17 +86,22 @@ main {
   background-repeat: no-repeat;
   margin: 0;
   padding: 0;
-  height: 100vh; /* ビューポートの高さに設定 */
+
 }
 
 
 main {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* 画面の高さいっぱいに表示 */
+  min-height: 90vh; /* 画面の高さいっぱいに表示 */
 }
 
 
 a {
   color: #a0522d; /* リンクのテキスト色を茶色に設定 */
+}
+
+.header_text{
+
+  font-size: 18px;
 }
