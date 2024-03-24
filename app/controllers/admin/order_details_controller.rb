@@ -12,13 +12,13 @@ class Admin::OrderDetailsController < ApplicationController
       else
          @order.update(status: "入金確認") # 製作中の商品がない場合は注文ステータスを元に戻す
       end
-  
+
       # 全ての商品が製作完了かどうかを確認
       @order_details = @order.order_details
       if @order_details.all? { |order_detail| order_detail.making_status == "製作完了" }
         @order.update(status: "発送準備中")
       end
-      flash[:success] = "注文明細を更新しました"
+
       redirect_to admin_order_path(@order_detail.order)
     else
       render 'admin/orders/show'

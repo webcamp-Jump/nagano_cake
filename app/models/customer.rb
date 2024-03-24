@@ -10,8 +10,8 @@ class Customer < ApplicationRecord
   has_many :orders
 
   #全て空でないこと
-   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :telephone_number, :postal_code, :address, :is_active, presence: true
-  
+   validates :last_name, :first_name, :last_name_kana, :first_name_kana, :email, :encrypted_password, :telephone_number, :postal_code, :address, presence: true
+
   # is_deletedがfalseならtrueを返すようにしている(退会処理)
   def active_for_authentication?
     super && !is_deleted
