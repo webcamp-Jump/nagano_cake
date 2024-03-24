@@ -1,5 +1,5 @@
 <div class="container mt-5">
- <h2>配送先一覧</h2>
+ <h2 class="mb-4 text-center">配送先一覧</h2>
   <%= form_with model: @address, url: public_address_path(@address), method: :patch do |f| %>
     <% if @address.errors.any? %>
         <div class="alert alert-danger">
@@ -12,25 +12,29 @@
         </div>
       <% end %>
 
-  <table>
-   <tr>
-     <td>郵便番号(ハイフンなし)</td>
-     <td><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control mx-5 mb-2" %></td>
-     <td></td>
-   </tr>
+  <div class="row justify-content-center">
+     <div class="col-lg-6">
+       <div class="row">
+         <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">郵便番号</label>
+         <div class="col-lg-9"><%= f.text_field :postal_code, autofocus: true, autocomplete: "postal_code", class:"form-control mb-2" %></div>
+       </div>
 
-   <tr>
-     <td>住所</td>
-     <td><%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control mx-5 mb-2" %></td>
-     <td></td>
-   </tr>
+       <div class="row">
+         <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">住所</label>
+         <div class="col-lg-9"><%= f.text_field :address, autofocus: true, autocomplete: "address", class:"form-control mb-2", style: "width: 400px;" %></div>
+       </div>
 
-   <tr>
-     <td>宛名</td>
-     <td><%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mx-5 mb-2" %></td>
-     <td><%= f.submit "変更内容を保存", class: "btn btn-success mx-5 mb-2" %></td>
-   </tr>
+       <div class="row">
+         <label class="col-lg-3" style="background-color:  #a0522d; border-radius: 5px; padding: 5px; color: #FAEBD7; text-align: center;">宛名</label>
+         <div class="col-lg-9"><%= f.text_field :name, autofocus: true, autocomplete: "name", class:"form-control mb-2" %></div>
+       </div>
 
-   </table>
+       <div class="row justify-content-center">
+         <div class="col-lg-6">
+           <%= f.submit "変更内容を保存", class: "btn btn-success mt-4 mb-2 w-100" %>
+         </div>
+       </div>
+     </div>
+   </div>
   <% end %>
 </div>
