@@ -1,10 +1,10 @@
 class Public::OrdersController < ApplicationController
   before_action :authenticate_customer!
-  
+
   def index
     @orders = current_customer.orders.page(params[:page])
   end
-  
+
   def new
     @order = Order.new
     @addresses = current_customer.addresses
@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     @order_details = @order.order_details.all
   end
-  
+
   private
 
   def order_params
