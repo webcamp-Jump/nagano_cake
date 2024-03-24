@@ -8,4 +8,9 @@ class Item < ApplicationRecord
   validates :name, presence: true, length: { maximum: 20 }
   validates :image, presence: true
   validates :introduction, presence: true, length: { maximum: 70 }
+
+  scope :search, ->(query) {
+    where("name LIKE ?", "%#{query}%") if query.present?
+  }
+
 end

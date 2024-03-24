@@ -24,10 +24,10 @@
       <!-- 上部中央に配置 -->
       <div class=" d-lg-flex d-none align-items-center col-lg-8">
         <!-- 検索ボックス -->
-        <form class="form-inline my-2 my-lg-0 ml-auto">
-          <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="検索">
-          <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
-        </form>
+      <form class="form-inline my-2 my-lg-0 ml-auto" action="<%= admin_signed_in? ? admin_items_path : public_items_path %>" method="get">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="検索" name="q">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
+      </form>
       </div>
     </div>
   </nav>
