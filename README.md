@@ -22,16 +22,16 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ## 用語の定義
 
-![スクリーンショット (340)](https://github.com/sslevel5/MyTask/assets/9004618/4bc0016d-3852-4ca1-8666-0a515baabaa0)
+![スクリーンショット (340)](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/74a7140b-5169-4f93-83f4-5c7d5a05008d)
 
 
 ## 実装機能
 
-![スクリーンショット (341)](https://github.com/sslevel5/MyTask/assets/9004618/c06907b0-be53-41b9-94d9-d207cdef3e03)
+![スクリーンショット (341)](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/4a371b9c-cf12-4a66-829f-65ef57a9c85b)
 
 ## ER図
 
-![スクリーンショット (342)](https://github.com/sslevel5/MyTask/assets/9004618/7885bc36-07d8-4b55-b8a1-a33c146c62f5)
+![スクリーンショット (342)](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/0bc6386d-429b-455f-a7a7-2e781b883fc8)
 
 ## 使用技術
 
