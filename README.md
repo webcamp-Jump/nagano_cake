@@ -35,7 +35,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ![Ruby](https://img.shields.io/badge/-Ruby-CC342D?style=flat-square&logo=Ruby)
 ![RubyOnRails](https://img.shields.io/badge/-Ruby%20on%20Rails-CC0000?style=flat-square&logo=Ruby+on+Rails)
-
+![image](https://github.com/sslevel5/MyTask/assets/9004618/8a5d38a3-0c56-421f-bb9c-5cd59e8abdce)
 
 ## Contribution
 
