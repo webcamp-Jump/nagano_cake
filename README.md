@@ -33,6 +33,10 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ## Install
 
+![Ruby](https://img.shields.io/badge/-Ruby-CC342D?style=flat-square&logo=Ruby)
+![RubyOnRails](https://img.shields.io/badge/-Ruby%20on%20Rails-CC0000?style=flat-square&logo=Ruby+on+Rails)
+
+
 ## Contribution
 
 ## Licence
