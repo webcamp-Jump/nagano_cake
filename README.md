@@ -2,6 +2,8 @@ Nagano_cake
 ====
 ## 概要
 
+<img src="https://github.com/sslevel5/MyTask/assets/9004618/108e2ef5-8193-4394-92b4-d9db7ddfeb68" >
+
 長野県にある小さな洋菓子店「ながのCAKE」の商品を通販するためのECサイト開発。
 
 ## 案件の背景
