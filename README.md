@@ -72,8 +72,16 @@ gem 'kaminari','~> 1.2.1'
 gem 'image_processing', '~> 1.2'
 gem "enum_help"
 ```
-[MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
-## Author
+## 製作者
 
-[tcnksm](https://github.com/tcnksm)
+岩永華怜
+
+柴田将吾
+
+聖前友理
+
+森真斗
+
+
+
