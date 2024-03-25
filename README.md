@@ -44,8 +44,6 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ## 使用方法
 
-====
-
 ## インストール
 
 $ git clone git@github.com:webcamp-Jump/nagano_cake.git
@@ -54,7 +52,11 @@ $ rails db:migrate
 $ rails db:seed
 $ bundle install
 
-## Licence
+## テスト
+
+管理者ログインはメールアドレスを【aa@aa】、パスワードは【aaaaaaaa】で使用できます。
+管理者ログインページへは、Aboutページの♥から遷移できます。
+顧客側の場合、新規作成で好きなアカウントを作成して利用が可能です。
 
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
