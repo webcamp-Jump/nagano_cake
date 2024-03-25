@@ -38,6 +38,9 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/8a5d38a3-0c56-421f-bb9c-5cd59e8abdce)
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/a74be429-0578-4a1a-83eb-241f0228abfd)
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/ec26d585-5a8e-442b-bf13-319a9d0ca09e)
+![image](https://github.com/sslevel5/MyTask/assets/9004618/952da8a7-230d-46be-b354-93fb3a5e1754)
+![image](https://github.com/sslevel5/MyTask/assets/9004618/eff1b784-7f38-4c81-b5a3-5a68fd362836)
+![image](https://github.com/sslevel5/MyTask/assets/9004618/c3520468-7538-4ae4-9532-e112f51c8988)
 
 ## Contribution
 
