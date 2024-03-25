@@ -55,6 +55,7 @@ $ cd nagano_cake
 $ rails db:migrate
 $ rails db:seed
 $ bundle install
+$ yarn add @babel/plugin-proposal-private-methods @babel/plugin-proposal-private-property-in-object
 ```
 
 ## テスト
