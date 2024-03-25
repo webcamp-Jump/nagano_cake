@@ -31,7 +31,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ![スクリーンショット (342)](https://github.com/sslevel5/MyTask/assets/9004618/7885bc36-07d8-4b55-b8a1-a33c146c62f5)
 
-## Install
+## 使用技術
 
 ![Ruby](https://img.shields.io/badge/-Ruby-CC342D?style=flat-square&logo=Ruby)
 ![RubyOnRails](https://img.shields.io/badge/-Ruby%20on%20Rails-CC0000?style=flat-square&logo=Ruby+on+Rails)
@@ -42,7 +42,17 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/eff1b784-7f38-4c81-b5a3-5a68fd362836)
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/c3520468-7538-4ae4-9532-e112f51c8988)
 
-## Contribution
+## 使用方法
+
+====
+
+## インストール
+
+$ git clone git@github.com:webcamp-Jump/nagano_cake.git
+$ cd nagano_cake
+$ rails db:migrate
+$ rails db:seed
+$ bundle install
 
 ## Licence
 
