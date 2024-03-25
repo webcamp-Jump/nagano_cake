@@ -57,11 +57,17 @@ $ bundle install
 
 管理者ログインはメールアドレスを【aa@aa】、パスワードは【aaaaaaaa】で使用できます。
 
-管理者ログインページへは、Aboutページの♥から遷移できます。
+管理者ログインページへは、Aboutページの ♥ から遷移できます。
 
 顧客側の場合、新規作成で好きなアカウントを作成して利用が可能です。
 
-
+## Gem
+```
+gem 'devise'
+gem 'kaminari','~> 1.2.1'
+gem 'image_processing', '~> 1.2'
+gem "enum_help"
+```
 [MIT](https://github.com/tcnksm/tool/blob/master/LICENCE)
 
 ## Author
