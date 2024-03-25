@@ -35,16 +35,16 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 
 ## 使用技術
 
-![Ruby](https://img.shields.io/badge/-Ruby-CC342D?style=flat-square&logo=Ruby)
-![RubyOnRails](https://img.shields.io/badge/-Ruby%20on%20Rails-CC0000?style=flat-square&logo=Ruby+on+Rails)
-![image](https://github.com/sslevel5/MyTask/assets/9004618/8a5d38a3-0c56-421f-bb9c-5cd59e8abdce)
-![image](https://github.com/sslevel5/MyTask/assets/9004618/a74be429-0578-4a1a-83eb-241f0228abfd)
-![image](https://github.com/sslevel5/MyTask/assets/9004618/ec26d585-5a8e-442b-bf13-319a9d0ca09e)
-![image](https://github.com/sslevel5/MyTask/assets/9004618/952da8a7-230d-46be-b354-93fb3a5e1754)
-![image](https://github.com/sslevel5/MyTask/assets/9004618/eff1b784-7f38-4c81-b5a3-5a68fd362836)
-![image](https://github.com/sslevel5/MyTask/assets/9004618/c3520468-7538-4ae4-9532-e112f51c8988)
-<img src="https://img.shields.io/badge/-Amazon%20AWS-232F3E.svg?logo=amazon-aws&style=flat">
-<img src="https://img.shields.io/badge/-GitHub-181717.svg?logo=github&style=flat">
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/20f0ab96-f3ef-400c-a475-5afa6c44d465)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/c5376540-d329-4dae-b997-eb4a6d164489)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/820ad9e9-4c2f-489a-8434-ff6e81f02db2)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/21570ae0-f3ed-4179-a330-9c16da6b62e6)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/20407384-322d-446c-93b5-bb02c840d805)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/f1c3fa28-1a9e-4ee9-8d41-3887f1dbd55c)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/0cfad73c-915a-434c-b503-0ddba352ddc6)
+![image](https://github.com/webcamp-Jump/nagano_cake/assets/9004618/f10b9e02-8159-4f18-909b-b5e8ca52bf1e)
+<img src="https://img.shields.io/badge/-Bootstrap-563D7C.svg?logo=bootstrap&style=flat">
+
 
 ## 使用方法
 
