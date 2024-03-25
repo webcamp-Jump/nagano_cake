@@ -1,2 +1,28 @@
-<h1>Public::Items#index</h1>
-<p>Find me in app/views/public/items/index.html.erb</p>
+<div class="col-sm-11 col-md-9 col-lg-7 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
+
+  <h2>商品一覧</h2><th><h4>(全<%= @total_items %>件)</h4></th>
+
+  <div class="item-grid">
+    <% @items.each do |item| %>
+      <div class="item-container">
+
+        <% if item.image.attached? %>
+          <div class="image-wrapper">
+            <%= link_to public_item_path(item) do %>
+              <%= image_tag url_for(item.image), class: 'img-fluid item-image' %>
+            <% end %>
+          </div>
+        <% end %>
+
+        <label><b><%= link_to item.name, public_item_path(item) %></b></label><br>
+        <label>￥<%= number_with_delimiter((item.price).ceil.to_i, delimiter: ',') %> (税込 ￥<%= number_with_delimiter((item.price * 1.1).round, delimiter: ',') %>)</label>
+
+      </div>
+    <% end %>
+  </div>
+
+  <div class="d-flex justify-content-center" style="margin-top: 50px;">
+    <%= paginate @items %>
+  </div>
+
+</div>

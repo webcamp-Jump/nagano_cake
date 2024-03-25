@@ -1,2 +1,86 @@
-<h1>Public::Homes#top</h1>
-<p>Find me in app/views/public/homes/top.html.erb</p>
+<div class="col-sm-12 col-md-12 col-lg-12 px-5 px-sm-0 mx-auto align-self-center text-start" style="margin-top: 50px; margin-bottom: 50px;">
+<div class="container">
+  <div class="row">
+    <div class="col-xl-2">
+      <table class="table table-hover table-inverse">
+        <thead>
+          <tr>
+            <th>ジャンルで探す</th>
+          </tr>
+        </thead>
+<tbody>
+  <% @genres.each_with_index do |genre, index| %>
+    <tr class="<%= 'hidden-genre' if index >= 7 %>">
+      <td><%= link_to genre.name, public_items_path(genre_id: genre.id) %></td> <!-- ジャンルをクリックしたときにそのジャンルの商品一覧ページに移動 -->
+    </tr>
+  <% end %>
+</tbody>
+      </table>
+
+      <% if @genres.count > 7 %>
+        <p id="show-more" class="text-center"><a href="#">もっと見る</a></p> <!-- もっと見るリンク -->
+      <% end %>
+    </div>
+    <div class="col-xl-10">
+      <%= image_tag 'top.jpg', class: 'hoge img-fluid' %>
+      <!--https://ja.pngtree.com/freebackground/row-of-cakes-on-a-counter_2481823.html-->
+      <div class="text" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: white; font-family: 'Roboto', sans-serif; text-align: center; text-shadow: 
+          -1px -1px 5px rgba(160,82,45,0.8),  
+          1px -1px 5px rgba(160,82,45,0.8),  
+          -1px 1px 5px rgba(160,82,45,0.8),  
+          1px 1px 5px rgba(160,82,45,0.8);">
+        <p>
+          <span style="display: inline-block; font-size: 24px;">Welcome <i class="fa-solid fa-cake-candles"></i> Naganocake</span><br>
+          このサイトは、ケーキ販売のECサイトになります。<br>
+          会員でない方も商品の閲覧はできますが、<br>
+          購入には会員登録が必要になります。<br>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-top: 50px;">
+  <h3>新着商品</h3>
+  <div class="row">
+    <% @items.each do |item| %>
+      <div class="col-md-3" style="display: flex; align-items: center; justify-content: center;">
+        <%= link_to public_item_path(item) do %>
+          <%= image_tag item.image.variant(resize: "100x100"), class: "img-fluid", style: "width: 200px; height: 200px; object-fit: cover; margin-bottom: 20px;" %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+  <div class="all-items-show-button">
+    <%= link_to "全ての商品をみる", public_items_path %>
+  </div>
+</div>
+</div>
+</div>
+
+
+
+
+
+
+<style>
+  .hidden-genre {
+    display: none; /* 初期状態は非表示 */
+  }
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var showMoreButton = document.getElementById("show-more");
+    if (showMoreButton) {
+      showMoreButton.addEventListener("click", function(e) {
+        e.preventDefault(); // ページ遷移をキャンセル
+        var hiddenGenres = document.querySelectorAll(".hidden-genre");
+        hiddenGenres.forEach(function(genre) {
+          genre.classList.remove("hidden-genre"); // 非表示クラスを削除して表示
+        });
+        showMoreButton.style.display = "none"; // もっと見るリンクを非表示
+      });
+    }
+  });
+</script>

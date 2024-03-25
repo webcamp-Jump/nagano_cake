@@ -2,15 +2,34 @@
 <html>
   <head>
     <title>NaganoCake</title>
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <!--聖前-->
+    <script src="https://kit.fontawesome.com/97dbd80b90.js" crossorigin="anonymous"></script>
+    <!--柴田-->
+    <script src="https://kit.fontawesome.com/8b6488317f.js" crossorigin="anonymous"></script>
+    <!--岩永-->
+    <script src="https://kit.fontawesome.com/e5fd4ead5a.js" crossorigin="anonymous"></script>
+    <!--森-->
+    <script src="https://kit.fontawesome.com/99f9963ced.js" crossorigin="anonymous"></script>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= stylesheet_link_tag 'custom_styles', media: 'all' %>
+
   </head>
 
   <body>
+    <%= render 'layouts/header' %>
+    <main style="background-color: #FAEBD7;">
+      <% flash.each do |message_type, message| %>
+        <div class="flash-message <%= message_type %>"><%= message %></div>
+      <% end %>
     <%= yield %>
+    </main>
+    <%= render 'layouts/footer' %>
   </body>
 </html>

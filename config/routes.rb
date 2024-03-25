@@ -1,84 +1,55 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'addresses/index'
-    get 'addresses/edit'
-    get 'addresses/create'
-    get 'addresses/update'
-    get 'addresses/destroy'
+  root to: 'public/homes#top'
+  get '/about', to: 'public/homes#about', as: 'about'
+  # 退会処理
+  get '/customers/unsubscribe', to: 'public/customers#unsubscribe', as: 'public_customers_unsubscribe'
+  patch '/customers/withdraw', to: 'public/customers#withdraw'
+
+  get '/admin', to: 'admin/homes#top', as: 'admin_root'
+  get 'customers/my_page', to: 'public/customers#show', as: 'public_customers'
+  get 'customers/information/edit', to: 'public/customers#edit', as: 'public_customers_information_edit'
+
+  get 'addresses', to: 'public/addresses#index', as: 'addresses'
+  get 'addresses/:id/edit', to: 'public/addresses#edit', as: 'addresses_edit'
+  patch 'public/addresses/:id', to: 'public/addresses#update'
+
+
+  devise_for :admin, controllers: {
+    sessions: "admin/sessions"
+  }
+  devise_for :customers, controllers: {
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
+  }
+
+  post '/customers/sign_in', to: 'public/sessions#create'
+
+  namespace :public, path: '' do
+    resources :addresses, only: [:index, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :show, :create] do
+        post 'confirm', on: :collection
+        get 'thanks', on: :collection
+    end
+    resources :items, except: [:destroy]
+    resources :cart_items, only: [ :update, :destroy, :create, :show] do
+      delete :destroy_all, on: :collection
+    end
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :registrations, only: [:new, :create]
+    # 修正した部分
+    delete 'cart_items', to: 'cart_items#destroy_all'
+    get 'cart_items', to: 'cart_items#index'  # カートアイテムを表示するためのルートを追加
   end
-  namespace :public do
-    get 'orders/new'
-    get 'orders/confirm'
-    get 'orders/thanks'
-    get 'orders/create'
-    get 'orders/index'
-    get 'orders/show'
-  end
-  namespace :public do
-    get 'cart_items/index'
-    get 'cart_items/update'
-    get 'cart_items/destroy'
-    get 'cart_items/destroy_all'
-    get 'cart_items/create'
-  end
-  namespace :public do
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-    get 'customers/unsubscribe'
-    get 'customers/withdraw'
-  end
-  namespace :public do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :public do
-    get 'registrations/new'
-    get 'registrations/create'
-  end
-  namespace :public do
-    get 'items/index'
-    get 'items/show'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+  # Move public/cart_items route definition outside of public namespace
+
   namespace :admin do
-    get 'order_details/update'
+    resources :order_details, only: [:update]
+    resources :orders, only: [:index, :show, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update, :show]
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :sessions, only: [:new, :create, :destroy]
+    resources :homes, only: [:top]
   end
-  namespace :admin do
-    get 'orders/show'
-  end
-  namespace :admin do
-    get 'customers/index'
-    get 'customers/show'
-    get 'customers/edit'
-    get 'customers/update'
-  end
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/create'
-    get 'genres/edit'
-    get 'genres/update'
-  end
-  namespace :admin do
-    get 'items/index'
-    get 'items/new'
-    get 'items/create'
-    get 'items/show'
-    get 'items/edit'
-    get 'items/update'
-  end
-  namespace :admin do
-    get 'sessions/new'
-    get 'sessions/create'
-    get 'sessions/destroy'
-  end
-  namespace :admin do
-    get 'homes/top'
-    get 'homes/about'
-  end
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

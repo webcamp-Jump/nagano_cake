@@ -1,0 +1,133 @@
+<header>
+  <!-- 上部 -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a0522d;">
+    <div class="container">
+      <!-- 上部左端に配置 -->
+     <div class="d-lg-flex d-none align-items-center col-lg-4 mr-auto">
+      <!-- Nagano Cake テキスト -->
+      <% if customer_signed_in? %>
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag("nagano_cake1.jpg", alt: "Nagano Cake", size: "100x100") %>
+        <% end %>
+      <% elsif admin_signed_in? %>
+        <%= link_to admin_items_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag("nagano_cake1.jpg", alt: "Nagano Cake", size: "100x100") %>
+        <% end %>
+      <% else %>
+        <%= link_to root_path, class: "navbar-brand", style: "margin-right: auto; margin-left: 0;" do %>
+          <%= image_tag("nagano_cake1.jpg", alt: "Nagano Cake", size: "100x100") %>
+        <% end %>
+      <% end %>
+    </div>
+
+
+      <!-- 上部中央に配置 -->
+      <div class=" d-lg-flex d-none align-items-center col-lg-8">
+        <!-- 検索ボックス -->
+      <form class="form-inline my-2 my-lg-0 ml-auto" action="<%= admin_signed_in? ? admin_items_path : public_items_path %>" method="get">
+        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="検索" name="q">
+        <button class="btn btn-outline-light my-2 my-sm-0" type="submit">🔍</button>
+      </form>
+      </div>
+    </div>
+  </nav>
+  <!-- 下部 -->
+  <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: #a0522d;">
+    <div class="container">
+      <!-- 下部左に配置 -->
+      <div class="col-lg-6">
+        <!-- ログインしている場合の下部メッセージ -->
+        <% if customer_signed_in? %>
+          <span class="text-light mr-12"><%= current_customer.last_name %> さまようこそ</span>
+        <% elsif admin_signed_in? %>
+          <span class="text-light mr-12">Administrator</span>
+        <% end %>
+      </div>
+      <!--下部右に配置-->
+      <div class="col-lg-6">
+        <!-- ハンバーガー・・・なくてもよさそう -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <!-- ログインしていない場合 -->
+            <% unless admin_signed_in? || customer_signed_in? %>
+              <li class="header_text">
+                <%= link_to new_customer_registration_path,class: 'nav-link text-light' do %>
+                  SignUp
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to new_customer_session_path,class: 'nav-link text-light' do %>
+                  Log in
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to public_items_path,class: 'nav-link text-light' do %>
+                Items
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to about_path,class: 'nav-link text-light' do %>
+                About
+                <% end %>
+              </li>
+            <% end %>
+            <!-- 管理者がログインしている場合 -->
+            <% if admin_signed_in? %>
+              <li class="header_text">
+                <%= link_to admin_items_path,class: 'nav-link text-light' do %>
+                  Items
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to admin_customers_path,class: 'nav-link text-light' do %>
+                Customers
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to admin_orders_path,class: 'nav-link text-light' do %>
+                  Order history
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to admin_genres_path,class: 'nav-link text-light' do %>
+                Genres
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to destroy_admin_session_path, method: :delete,class: 'nav-link text-light' do %>
+                Log out
+                <% end %>
+              </li>
+            <% end %>
+            <!-- 顧客がログインしている場合 -->
+            <% if customer_signed_in? %>
+              <li class="header_text">
+                <%= link_to public_customers_path,class: 'nav-link text-light' do %>
+                MyPage
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to public_items_path,class: 'nav-link text-light' do %>
+                Items
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to public_cart_items_path,class: 'nav-link text-light' do %>
+                Cart
+                <% end %>
+              </li>
+              <li class="header_text">
+                <%= link_to destroy_customer_session_path, method: :delete,class: 'nav-link text-light' do %>
+                Log out
+                <% end %>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </nav>
+</header>
