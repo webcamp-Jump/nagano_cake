@@ -23,7 +23,9 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 ![スクリーンショット (340)](https://github.com/sslevel5/MyTask/assets/9004618/4bc0016d-3852-4ca1-8666-0a515baabaa0)
 
 
-## Requirement
+## 実装機能
+
+![スクリーンショット (341)](https://github.com/sslevel5/MyTask/assets/9004618/c06907b0-be53-41b9-94d9-d207cdef3e03)
 
 ## Usage
 
