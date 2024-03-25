@@ -8,13 +8,13 @@
             <th>ジャンルで探す</th>
           </tr>
         </thead>
-        <tbody>
-          <% @genres.each_with_index do |genre, index| %>
-            <tr class="<%= 'hidden-genre' if index >= 7 %>"> <!-- 10個を超える場合は非表示のクラスを付与 -->
-              <td><%= genre.name %></td>
-            </tr>
-          <% end %>
-        </tbody>
+<tbody>
+  <% @genres.each_with_index do |genre, index| %>
+    <tr class="<%= 'hidden-genre' if index >= 7 %>">
+      <td><%= link_to genre.name, public_items_path(genre_id: genre.id) %></td> <!-- ジャンルをクリックしたときにそのジャンルの商品一覧ページに移動 -->
+    </tr>
+  <% end %>
+</tbody>
       </table>
 
       <% if @genres.count > 7 %>
