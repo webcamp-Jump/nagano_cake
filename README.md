@@ -42,6 +42,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/eff1b784-7f38-4c81-b5a3-5a68fd362836)
 ![image](https://github.com/sslevel5/MyTask/assets/9004618/c3520468-7538-4ae4-9532-e112f51c8988)
 <img src="https://img.shields.io/badge/-Amazon%20AWS-232F3E.svg?logo=amazon-aws&style=flat">
+<img src="https://img.shields.io/badge/-GitHub-181717.svg?logo=github&style=flat">
 
 ## 使用方法
 
