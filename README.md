@@ -46,7 +46,7 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 <img src="https://img.shields.io/badge/-Bootstrap-563D7C.svg?logo=bootstrap&style=flat">
 
 
-## 使用方法
+# 使用方法
 
 ## インストール
 ```
