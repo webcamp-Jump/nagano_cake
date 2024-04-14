@@ -52,9 +52,9 @@ InstagramのDMやメールで通販の注文を受けていたが、情報管理
 ```
 $ git clone git@github.com:webcamp-Jump/nagano_cake.git
 $ cd nagano_cake
+$ bundle install
 $ rails db:migrate
 $ rails db:seed
-$ bundle install
 ```
 
 ## テスト
